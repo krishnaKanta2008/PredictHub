@@ -71,7 +71,3 @@ Follow this documentation to get the Github_ClientId and Github_ClientSecret: [G
     vite.config.js
 README.md
 ```
-
----
-
-Made using [Universal-Box](https://github.com/Abhishek-Mallick/universal-box)
