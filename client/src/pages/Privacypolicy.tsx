@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default function PrivacyPolicy() {
-    const [lastUpdated] = useState("October 17, 2024")
+    const [lastUpdated] = useState("November 08, 2024")
 
     return (
         <div className="min-h-screen bg-background text-foreground p-8">
