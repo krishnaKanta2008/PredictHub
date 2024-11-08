@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Toaster } from "@/components/ui/sonner"
 import Signin from "./pages/Signin";
 import Home from "./pages/Home"
+import PrivacyPolicy from "./pages/Privacypolicy";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/signin" element={<Signin/>} /> 
         <Route path="/home" element={<Home />} /> 
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
       </Routes>
       <Toaster />
     </ThemeProvider>
