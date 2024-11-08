@@ -18,8 +18,6 @@ CORS(app, supports_credentials=True, resources={
     }
 })
 
-client = MongoClient(os.getenv('MONGODB_URI'))
-db = client['your_database_name']  
 app.register_blueprint(auth_routes)  
 
 @app.route('/')

@@ -122,6 +122,7 @@ export default function Signup() {
                                 onChange={handleChange}
                                 placeholder="Tyler"
                                 type="text"
+                                required
                             />
                         </LabelInputContainer>
                         <LabelInputContainer>
@@ -132,6 +133,7 @@ export default function Signup() {
                                 onChange={handleChange}
                                 placeholder="Durden"
                                 type="text"
+                                required
                             />
                         </LabelInputContainer>
                     </div>
@@ -143,6 +145,7 @@ export default function Signup() {
                             onChange={handleChange}
                             placeholder="username"
                             type="text"
+                            required
                         />
                     </LabelInputContainer>
                     <LabelInputContainer className="mb-4">
@@ -153,6 +156,7 @@ export default function Signup() {
                             onChange={handleChange}
                             placeholder="projectmayhem@fc.com"
                             type="email"
+                            required
                         />
                     </LabelInputContainer>
                     <LabelInputContainer className="mb-4">
@@ -163,6 +167,7 @@ export default function Signup() {
                             onChange={handleChange}
                             placeholder="••••••••"
                             type="password"
+                            required
                         />
                     </LabelInputContainer>
 

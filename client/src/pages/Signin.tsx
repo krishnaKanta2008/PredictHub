@@ -27,6 +27,8 @@ export default function Signin() {
 
             if (response.ok) {
                 const data = await response.json();
+                localStorage.setItem("predicthub_username", data.user.username);
+                console.log(data.user.username);
                 toast.success("Signin Successfull",{
                     description: `Welcome, ${data.user.username}`
                 });
@@ -59,6 +61,7 @@ export default function Signin() {
                             type="text"
                             value={formData.username}
                             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                            required
                         />
                     </LabelInputContainer>
                     <LabelInputContainer className="mb-4">
@@ -69,6 +72,7 @@ export default function Signin() {
                             type="password"
                             value={formData.password}
                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                            required
                         />
                     </LabelInputContainer>
 

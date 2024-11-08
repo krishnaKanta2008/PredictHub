@@ -17,13 +17,14 @@ export function SidebarDemo() {
     const navigate = useNavigate();
     const [userImage, setUserImage] = useState(null);
     const [open, setOpen] = useState(false);
+    const [username, setUsername] = useState(localStorage.getItem("predicthub_username"));
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const username = localStorage.getItem("username");
+                const username = localStorage.getItem("predicthub_username");
                 if (!username) {
-                    throw new Error("Username not found in localStorage");
+                    navigate("/");
                 }
 
                 const response = await fetch(`${BACKEND_URL}/profile/${username}`, {
@@ -45,15 +46,28 @@ export function SidebarDemo() {
         };
 
         fetchUserData();
-    }, []);
+    }, [navigate]);
+
+    useEffect(() => {
+        if (!username) {
+            navigate("/", { replace: true });
+        }
+    }, [username, navigate]);
 
     function logout() {
         console.log("Logout clicked");
-        localStorage.removeItem("username");
-        navigate("/"); 
+        localStorage.removeItem("predicthub_username");
+        setUsername(null);
+        navigate("/");  // Redirect to the home page after logout
     }
 
-    const links = [
+    interface Links {
+        label: string;
+        href: string;
+        icon: JSX.Element;
+    }
+
+    const links: Links[] = [
         {
             label: "Dashboard",
             href: "#",
@@ -62,7 +76,7 @@ export function SidebarDemo() {
             ),
         },
         {
-            label: "Profile",
+            label: username || "Profile",
             href: "#",
             icon: (
                 <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
@@ -74,14 +88,6 @@ export function SidebarDemo() {
             icon: (
                 <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
-        },
-        {
-            label: "Logout",
-            href: "#",
-            icon: (
-                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-            ),
-            onClick: logout,
         },
     ];
 
@@ -96,35 +102,43 @@ export function SidebarDemo() {
                                 <SidebarLink
                                     key={idx}
                                     link={link}
-                                    onClick={link.onClick}  // Attach specific onClick function
                                 />
                             ))}
+                            {/* Logout link with onClick */}
+                            <SidebarLink
+                                link={{
+                                    label: "Logout",
+                                    href: "#",
+                                    icon: (
+                                        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                                    ),
+                                }}
+                                onClick={logout}
+                            />
                         </div>
                     </div>
                     <div>
                         <SidebarLink
                             link={{
-                                label: "Profile",
+                                label: username || "Profile",
                                 href: "#",
-                                icon: (
-                                    userImage ? (
-                                        <img
-                                            src={userImage}
-                                            alt="User Profile"
-                                            className="h-7 w-7 rounded-full"
-                                        />
-                                    ) : (
-                                        <IconCircle className="h-5 w-5" />
-                                    )
+                                icon: userImage ? (
+                                    <img
+                                        src={userImage}
+                                        alt="User Profile"
+                                        className="h-7 w-7 rounded-full"
+                                    />
+                                ) : (
+                                    <IconCircle className="h-5 w-5" />
                                 ),
-                                onClick: () => {
-                                    const username = localStorage.getItem("username");
-                                    if (username) {
-                                        navigate(`/profile/${username}`);
-                                    } else {
-                                        console.error("Username not found in localStorage");
-                                    }
-                                },
+                            }}
+                            onClick={() => {
+                                const username = localStorage.getItem("predicthub_username");
+                                if (username) {
+                                    navigate(`/profile/${username}`);
+                                } else {
+                                    console.error("Username not found in localStorage");
+                                }
                             }}
                         />
                     </div>
