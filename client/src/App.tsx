@@ -1,6 +1,6 @@
 import Landing from "./pages/Landing"
 import Signup from './pages/Signup';
-import { ThemeProvider } from '@/components/Theme/theme-provider'
+import { ThemeProvider } from "next-themes"
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from "@/components/ui/sonner"
 import Signin from "./pages/Signin";
@@ -9,7 +9,7 @@ import PrivacyPolicy from "./pages/Privacypolicy";
 
 const App = () => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<Signup />} /> 
