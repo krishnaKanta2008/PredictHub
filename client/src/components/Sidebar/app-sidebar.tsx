@@ -69,7 +69,7 @@ const data = {
             url: "#",
             icon: Bot,
             items: [
-                { title: "LSTM", url: "#" },
+                { title: "LSTM", url: "/lstm" },
             ],
         },
         // {
@@ -88,7 +88,7 @@ const data = {
             url: "#",
             icon: Settings2,
             items: [
-                { title: "General", url: "#" },
+                { title: "Theme", url: "#" },
                 { title: "Team", url: "#" },
                 { title: "Billing", url: "#" },
                 { title: "Limits", url: "#" },

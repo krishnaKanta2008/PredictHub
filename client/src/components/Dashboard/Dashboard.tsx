@@ -1,37 +1,20 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
-import { fetchStockData } from "@/app/actions"
 import  StockChart  from "@/components/Dashboard/stock-chart"
 import { StockMetric } from "@/components/Dashboard/stock-metrics"
 
+interface PageProps {
+    data: any;
+    loading: boolean;
+    ticker: string;
+}
 
-export default function Page() {
-    const [symbol] = useState("GOOGL")
-    const [data, setData] = useState<any>(null)
-    const [loading, setLoading] = useState(true)
-
-    const fetchData = useCallback(async () => {
-        setLoading(true)
-        try {
-            const result = await fetchStockData(symbol)
-            setData(result)
-        } catch (error) {
-            console.error("Error fetching stock data:", error)
-        }
-        setLoading(false)
-    }, [symbol])
-
-    useEffect(() => {
-        fetchData()
-    }, [fetchData])
-
-
+export default function Page({ data, loading, ticker }: PageProps) {
     if (loading || !data || !data.history) {
         return <div className="flex h-screen items-center justify-center">Loading...</div>
     }
 
-    const { current, previous} = data
+    const { current, previous } = data
 
     return (
         <div className="container h-screen mx-auto p-4">
@@ -57,7 +40,7 @@ export default function Page() {
                     prefix="$"
                 />
             </div>
-            <StockChart ticker="GOOGL" />
+            <StockChart ticker={ticker} />
         </div>
     )
 }

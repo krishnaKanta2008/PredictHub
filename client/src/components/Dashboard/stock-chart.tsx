@@ -6,10 +6,10 @@ import Plot from 'react-plotly.js'
 import { Layout, Data } from 'plotly.js'
 
 interface StockChartProps {
-    ticker?: string
+    ticker: string
 }
 
-export default function StockChart({ ticker = 'GOOGL' }: StockChartProps) {
+export default function StockChart({ ticker }: StockChartProps) {
     const [graphData, setGraphData] = useState<{ data: Data[], layout: Partial<Layout> } | null>(null)
     const [error, setError] = useState<string | null>(null)
 

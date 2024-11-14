@@ -1,9 +1,11 @@
 from flask import Blueprint, request, jsonify
 from utils.Auth.auth import signup_handler, signin_handler, github_callback 
 from utils.Stock.stock import fetch_stock_data
+from utils.Prediction.LSTM import predict_stock_price
 
 auth_routes = Blueprint('auth', __name__)
 stock_routes = Blueprint('stock', __name__)
+prediction_routes = Blueprint('prediction', __name__)
 
 @auth_routes.route('/signup', methods=['POST'])
 def signup():
@@ -17,6 +19,11 @@ def signin():
 def github():
     return github_callback()
 
-@stock_routes.route('/fetchStockData/<symbol>')
+@stock_routes.route('/fetchStockData/<symbol>', methods=['GET'])
 def fetch_stock_data_route(symbol):
     return fetch_stock_data(symbol)
+
+@prediction_routes.route('/predict/<ticker>', methods=['GET'])
+def predict_stock(ticker):
+    result = predict_stock_price(ticker)
+    return jsonify(result)

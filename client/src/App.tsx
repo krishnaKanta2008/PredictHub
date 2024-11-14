@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner"
 import Signin from "./pages/Signin";
 import Home from "./pages/Home"
 import PrivacyPolicy from "./pages/Privacypolicy";
+import Lstm from "./pages/Lstm";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/signin" element={<Signin/>} /> 
-        <Route path="/home" element={<Home />} /> 
+        <Route path="/home" element={<Home />} />
+        <Route path="/lstm" element={<Lstm />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
       </Routes>
       <Toaster />
