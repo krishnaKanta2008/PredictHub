@@ -9,7 +9,7 @@ interface StockChartProps {
     ticker: string
 }
 
-export default function StockChart({ ticker }: StockChartProps) {
+const StockChart: React.FC<StockChartProps> = ({ ticker = "GOOGL" }) => {
     const [graphData, setGraphData] = useState<{ data: Data[], layout: Partial<Layout> } | null>(null)
     const [error, setError] = useState<string | null>(null)
 
@@ -73,3 +73,5 @@ export default function StockChart({ ticker }: StockChartProps) {
         </Card>
     )
 }
+
+export default StockChart

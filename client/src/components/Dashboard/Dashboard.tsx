@@ -2,6 +2,7 @@
 
 import  StockChart  from "@/components/Dashboard/stock-chart"
 import { StockMetric } from "@/components/Dashboard/stock-metrics"
+import PredictionCard from "./Prediction-card";
 
 interface PageProps {
     data: any;
@@ -41,6 +42,7 @@ export default function Page({ data, loading, ticker }: PageProps) {
                 />
             </div>
             <StockChart ticker={ticker} />
+            <PredictionCard ticker={ticker} />
         </div>
     )
 }

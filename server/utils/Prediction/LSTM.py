@@ -62,7 +62,7 @@ def LSTM(df):
     x_train, y_train = np.array(x_train), np.array(y_train)
 
     # Load pre-trained model
-    model = load_model('stock_price_prediction_model.h5')
+    model = load_model('./LSTM-DL-MODEL/stock_price_prediction_model.h5')
 
     past_100_days = data_training.tail(100)
     final_df = pd.concat([past_100_days, data_testing], ignore_index=True)
@@ -78,35 +78,14 @@ def LSTM(df):
 
     x_test, y_test = np.array(x_test), np.array(y_test)
 
-    # Predicting with the model
-    y_predict = model.predict(x_test)
-
-    # Inverse the scaling for predictions
-    scaler = scaler.scale_
-    scale_factor = 1 / scaler[0]
-    y_predict = y_predict * scale_factor
+    # Predicting the stock prices
+    y_predicted = model.predict(x_test)
+    scale_factor = 1 / scaler.scale_[0]
+    y_predicted = y_predicted * scale_factor
     y_test = y_test * scale_factor
 
-    # Prepare for future prediction
-    last_100_days = data_testing[-100:].values
-    last_100_days_scaled = scaler.fit_transform(last_100_days)
-
-    predicted_prices = []
-
-    for i in range(1):
-        X_test = np.array([last_100_days_scaled])
-        X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
-        predicted_price = model.predict(X_test)
-        predicted_prices.append(predicted_price)
-        last_100_days_scaled = np.append(last_100_days_scaled, predicted_price)
-        last_100_days_scaled = np.delete(last_100_days_scaled, 0)
-
-    predicted_prices = np.array(predicted_prices)
-    predicted_prices = predicted_prices.reshape(predicted_prices.shape[0], predicted_prices.shape[2])
-    predicted_prices = scaler.inverse_transform(predicted_prices)
-    
-    predicted_price = predicted_prices[0][0]
-
+    # Return the predicted price
+    predicted_price = y_predicted[-1][0]
     return round(predicted_price, 3)
 
 def predict_stock_price(ticker):
@@ -115,8 +94,3 @@ def predict_stock_price(ticker):
     df = get_data(ticker, period)
     predicted_price = LSTM(df)
     return predicted_price
-
-# Remove or comment out these lines
-# ticker = 'AAPL'  # Example ticker
-# predicted_price = predict_stock_price(ticker)
-# print(f'Predicted price for {ticker}: {predicted_price}')
