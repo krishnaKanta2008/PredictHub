@@ -8,7 +8,7 @@ import {
     ChevronsUpDown,
     LifeBuoy,
     LogOut,
-    Send,
+    // Send,
     Settings2,
     SquareTerminal,
 } from "lucide-react"
@@ -88,15 +88,15 @@ const data = {
             icon: Settings2,
             items: [
                 { title: "Theme", url: "#" },
-                { title: "Team", url: "#" },
-                { title: "Billing", url: "#" },
-                { title: "Limits", url: "#" },
+                { title: "Account", url: "#" },
+                { title: "Edit Account", url: "#" },
+                // { title: "Limits", url: "#" },
             ],
         },
     ],
     navSecondary: [
-        { title: "Support", url: "#", icon: LifeBuoy },
-        { title: "Feedback", url: "#", icon: Send },
+        { title: "Support", url: "/support", icon: LifeBuoy },
+        // { title: "Feedback", url: "#", icon: Send },
     ],
     
 }

@@ -7,6 +7,7 @@ import Signin from "./pages/Signin";
 import Home from "./pages/Home"
 import PrivacyPolicy from "./pages/Privacypolicy";
 import Lstm from "./pages/Lstm";
+import Support from "./pages/support";
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/lstm" element={<Lstm />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
+        <Route path="/support" element={<Support />} />
+        <Route path="*" element={<div>404</div>} />
       </Routes>
       <Toaster />
     </ThemeProvider>
