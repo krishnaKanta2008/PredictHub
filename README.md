@@ -1,6 +1,40 @@
-# Vite + Flask Full Stack Project Template
+# PredictHub
 
-This is a full stack project template using Vite for the frontend and Flask for the backend. It also integrates MongoDB as the database.
+# 📈 PredictHub
+
+PredictHub is a sophisticated stock price prediction platform that combines machine learning with real-time market data analysis. The application leverages LSTM (Long Short-Term Memory) neural networks to forecast stock prices based on historical data. 🤖
+
+### ✨ Key Features
+
+- 🔮 **Stock Price Predictions**: Utilizes deep learning LSTM models to generate price forecasts
+- 📊 **Real-Time Market Data**: Integrates with Yahoo Finance API to fetch current stock information
+- 📈 **Interactive Charts**: Visualizes stock data through interactive candlestick charts
+- 🔐 **User Authentication**: Secure login system with GitHub OAuth integration
+- 📱 **Responsive Design**: Modern UI built with React and Tailwind CSS
+
+### 🛠️ Tech Stack
+
+**Frontend:**
+- ⚛️ React.js with TypeScript
+- 🎨 Tailwind CSS for styling
+- 🎯 Shadcn UI components
+- 📊 Chart.js for data visualization
+
+**Backend:**
+- 🐍 Flask Python server
+- 🗄️ MongoDB database
+- 🧠 LSTM neural networks for predictions
+- 📡 Yahoo Finance API integration
+
+### 🏗️ Architecture
+
+The application follows a client-server architecture:
+- 🖥️ Frontend makes API calls to fetch predictions and stock data
+- ⚙️ Backend processes requests, runs ML models, and manages authentication
+- ⚡ Real-time data is fetched from Yahoo Finance
+- 🤖 Predictions are generated using pre-trained LSTM models
+
+
 
 ## Installation Guide
 
@@ -49,9 +83,7 @@ Follow this documentation to get the Github_ClientId and Github_ClientSecret: [G
     ```sh
     npm install
     ```
-3. Replace the Github_clientId with yours in `./client/pages/signup.tsx` in order to use GithubOAuth
-
-4. Start the development server:
+3. Start the development server:
     ```sh
     npm run dev
     ```
@@ -59,15 +91,27 @@ Follow this documentation to get the Github_ClientId and Github_ClientSecret: [G
 ## Project Structure
 
 ```
-/server
-    /app
-    app.py
-    requirements.txt
-    .env
-/client
-    /src
-        app.jsx
-    package.json
-    vite.config.js
-README.md
+predicthub/
+├── client/                 
+│   ├── public/            
+│   ├── src/               
+│   │   ├── components/    
+│   │   ├── pages/        
+│   │   ├── styles/       
+│   │   └── utils/        
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── server/ 
+|   ├── venv/              
+│   ├── api/              
+│   ├── models/           
+│   ├── services/         
+│   ├── utils/            
+│   ├── requirements.txt
+│   └── app.py           
+│
+├── LICENSE
+└── README.md
 ```
+

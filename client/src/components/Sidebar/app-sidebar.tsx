@@ -6,7 +6,6 @@ import {
     Bot,
     ChevronRight,
     ChevronsUpDown,
-    Command,
     LifeBuoy,
     LogOut,
     Send,
@@ -160,10 +159,10 @@ export function AppSidebar() {
                         <SidebarMenuButton size="lg" asChild>
                             <a href="/">
                                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                                    <Command className="size-4" />
+                                    <span className="text-2xl">📈</span>
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
-                                    <span className="truncate font-semibold">Predicthub</span>
+                                    <span className="truncate font-semibold text-xl">Predicthub</span>
                                 </div>
                             </a>
                         </SidebarMenuButton>

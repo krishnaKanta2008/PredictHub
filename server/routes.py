@@ -3,6 +3,7 @@ from utils.Auth.auth import signup_handler, signin_handler, github_callback
 from utils.Stock.stock import fetch_stock_data
 from utils.Prediction.LSTM import predict_stock_price
 from utils.User.profile import get_user_profile
+import numpy as np
 
 auth_routes = Blueprint('auth', __name__)
 stock_routes = Blueprint('stock', __name__)
@@ -30,5 +31,25 @@ def fetch_stock_data_route(symbol):
 
 @prediction_routes.route('/predict/<ticker>', methods=['GET'])
 def predict_stock(ticker):
-    result = predict_stock_price(ticker)
-    return jsonify(result)
+    try:
+        # Get prediction
+        result = predict_stock_price(ticker)
+        
+        # Convert numpy values to Python native types
+        if isinstance(result, np.ndarray):
+            result = result.tolist()
+        elif isinstance(result, np.generic):
+            result = result.item()
+            
+        # Return as JSON with proper structure
+        return jsonify({
+            "success": True,
+            "ticker": ticker,
+            "predicted_price": result
+        })
+        
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500

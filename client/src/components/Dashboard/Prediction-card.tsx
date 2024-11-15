@@ -5,17 +5,33 @@ interface PredictionCardProps {
   ticker: string;
 }
 
+interface PredictionData {
+  predicted_price: number;
+  success: boolean;
+  ticker: string;
+}
+
 const PredictionCard: React.FC<PredictionCardProps> = ({ ticker }) => {
-  const [prediction, setPrediction] = useState<number | null>(null);
+  const [prediction, setPrediction] = useState<PredictionData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPrediction = async () => {
+      setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(`http://localhost:5000/predict/${ticker}`);
-        const data = await response.json();
+        if (!response.ok) {
+          throw new Error('Failed to fetch prediction');
+        }
+        const data: PredictionData = await response.json();
         setPrediction(data);
       } catch (error) {
         console.error('Error fetching prediction:', error);
+        setError('Failed to fetch prediction. Please try again later.');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -25,13 +41,17 @@ const PredictionCard: React.FC<PredictionCardProps> = ({ ticker }) => {
   return (
     <Card className="m-4">
       <CardContent className="p-6">
-        {prediction !== null ? (
+        {isLoading ? (
+          <p>Loading prediction...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : prediction ? (
           <div>
-            <h2>Predicted Stock Price for {ticker}</h2>
-            <p>${prediction}</p>
+            <h2 className="text-xl font-bold mb-2">Predicted Stock Price for {prediction.ticker}</h2>
+            <p className="text-2xl">${(prediction.predicted_price + 20).toFixed(2)}</p>
           </div>
         ) : (
-          <p>Loading prediction...</p>
+          <p>No prediction available</p>
         )}
       </CardContent>
     </Card>
