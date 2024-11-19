@@ -1,5 +1,3 @@
-# PredictHub
-
 # 📈 PredictHub
 
 PredictHub is a sophisticated stock price prediction platform that combines machine learning with real-time market data analysis. The application leverages LSTM (Long Short-Term Memory) neural networks to forecast stock prices based on historical data. 🤖
