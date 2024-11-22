@@ -1,16 +1,16 @@
 "use client"
 
 import {
-    BadgeCheck,
-    // BookOpen,
-    Bot,
+    LibraryBig,
+    Home,
+    Settings,
     ChevronRight,
     ChevronsUpDown,
-    LifeBuoy,
+    // LifeBuoy,
     LogOut,
-    // Send,
-    Settings2,
-    SquareTerminal,
+    List,
+    ChartNoAxesCombined,
+    CircleAlert
 } from "lucide-react"
 
 import {
@@ -26,7 +26,7 @@ import {
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuGroup,
+    // DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
@@ -52,50 +52,53 @@ import { useNavigate } from 'react-router-dom'
 
 const BACKEND_URL = 'http://localhost:5000'
 
+const storedUsername = localStorage.getItem('predicthub_username')  
+
 const data = {
     navMain: [
         {
-            title: "Home",
+            title: "DashBoard",
             url: "/home",
-            icon: SquareTerminal,
+            icon: Home,
             isActive: true,
-            items: [
-                { title: "Dashboard", url: "/home" },
-            ],
+           
         },
         {
             title: "Prediction",
             url: "#",
-            icon: Bot,
+            icon: ChartNoAxesCombined,
             items: [
                 { title: "LSTM", url: "/lstm" },
             ],
         },
+        {
+            title: "Watchlist",
+            url: `/watchlist/${storedUsername}`,
+            icon: List,
+            isActive: true,
+
+        },
+        {
+            title: "Learning",
+            url: "/learning",
+            icon: LibraryBig,
+            isActive: true,
+
+        },
         // {
-        //     title: "Documentation",
+        //     title: "Settings",
         //     url: "#",
-        //     icon: BookOpen,
+        //     icon: Settings,
         //     items: [
-        //         { title: "Introduction", url: "#" },
-        //         { title: "Get Started", url: "#" },
-        //         { title: "Tutorials", url: "#" },
-        //         { title: "Changelog", url: "#" },
+        //         { title: "Theme", url: "#" },
+        //         { title: "Account", url: "#" },
+        //         // { title: "Edit Account", url: "#" },
+        //         // { title: "Limits", url: "#" },
         //     ],
         // },
-        {
-            title: "Settings",
-            url: "#",
-            icon: Settings2,
-            items: [
-                { title: "Theme", url: "#" },
-                { title: "Account", url: "#" },
-                { title: "Edit Account", url: "#" },
-                // { title: "Limits", url: "#" },
-            ],
-        },
     ],
     navSecondary: [
-        { title: "Support", url: "/support", icon: LifeBuoy },
+        { title: "Support", url: "/support", icon: CircleAlert },
         // { title: "Feedback", url: "#", icon: Send },
     ],
     
@@ -103,10 +106,10 @@ const data = {
 
 export function AppSidebar() {
     const navigate = useNavigate()
-    const [userImage, setUserImage] = useState<string>('')
+    // const [userImage, setUserImage] = useState<string>('')
     const [username, setUsername] = useState<string | null>(null)
     const [userName, setUserName] = useState<string | null>(null)
-    const [userEmail, setUserEmail] = useState<string | null>("user@example.com") 
+    const [userEmail, setUserEmail] = useState<string | null>(null)
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -133,9 +136,9 @@ export function AppSidebar() {
                 const responseData = await response.json()
                 console.log('Fetched user data:', responseData) 
 
-                setUserImage(responseData.user?.image || '')
-                setUserName(responseData.user?.name || storedUsername)
-                setUserEmail(responseData.user?.email || "user@example.com") 
+                // setUserImage(responseData.user?.image || '')
+                setUserName(responseData.username)
+                setUserEmail(responseData.email) 
             } catch (error) {
                 console.error('Error fetching user data', error)
             }
@@ -152,7 +155,7 @@ export function AppSidebar() {
     }
 
     return (
-        <Sidebar variant="inset">
+        <Sidebar variant="inset" className="border-r">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
@@ -208,6 +211,49 @@ export function AppSidebar() {
                             </Collapsible>
                         ))}
                     </SidebarMenu>
+                    <SidebarMenu>
+                        
+                            <Collapsible asChild >
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild tooltip="Settings">
+                                    <a href=''>
+                                        <Settings />
+                                        <span>Setting</span>
+                                    </a> 
+                                    </SidebarMenuButton>
+                                        <>
+                                            <CollapsibleTrigger asChild>
+                                                <SidebarMenuAction className="data-[state=open]:rotate-90">
+                                                    <ChevronRight />
+                                                    <span className="sr-only">Toggle</span>
+                                                </SidebarMenuAction>
+                                            </CollapsibleTrigger>
+                                            <CollapsibleContent>
+                                                <SidebarMenuSub>
+                                                    
+                                                        <SidebarMenuSubItem>
+                                                            <SidebarMenuSubButton asChild>
+                                                                <a>
+                                                                    <span>Theme</span>
+                                                                </a>
+                                                            </SidebarMenuSubButton>
+                                                        </SidebarMenuSubItem>
+                                            <SidebarMenuSubItem>
+                                                <SidebarMenuSubButton asChild>
+                                                    <a>
+                                                        <span>Account</span>
+                                                    </a>
+                                                </SidebarMenuSubButton>
+                                            </SidebarMenuSubItem>
+                                                    
+                                                </SidebarMenuSub>
+                                            </CollapsibleContent>
+                                        </>
+                                   
+                                </SidebarMenuItem>
+                            </Collapsible>
+                      
+                    </SidebarMenu>
                 </SidebarGroup>
                 <SidebarGroup className="mt-auto">
                     <SidebarGroupContent>
@@ -236,8 +282,8 @@ export function AppSidebar() {
                                     className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                                 >
                                     <Avatar className="h-8 w-8 rounded-lg">
-                                        <AvatarImage src={userImage || undefined} alt={userName || "User"} />
-                                        <AvatarFallback className="rounded-lg">PH</AvatarFallback>
+                                        {/* <AvatarImage src={userImage || undefined} alt={userName || "User"} /> */}
+                                        <AvatarFallback className="rounded-lg">{userName?.slice(0, 2)}</AvatarFallback>
                                     </Avatar>
                                     <div className="grid flex-1 text-left text-sm leading-tight">
                                         <span className="truncate font-semibold">
@@ -259,8 +305,8 @@ export function AppSidebar() {
                                 <DropdownMenuLabel className="p-0 font-normal">
                                     <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                         <Avatar className="h-8 w-8 rounded-lg">
-                                            <AvatarImage src={userImage || undefined} alt={userName || "User"} />
-                                            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                                            {/* <AvatarImage src={userImage || undefined} alt={userName || "User"} /> */}
+                                            <AvatarFallback className="rounded-lg">{userName?.slice(0,2)}</AvatarFallback>
                                         </Avatar>
                                         <div className="grid flex-1 text-left text-sm leading-tight">
                                             <span className="truncate font-semibold">
@@ -273,15 +319,15 @@ export function AppSidebar() {
                                     </div>
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuGroup>
+                                {/* <DropdownMenuGroup>
                                     <DropdownMenuItem>
                                         <BadgeCheck />
                                         Account
                                     </DropdownMenuItem>
-                                </DropdownMenuGroup>
-                                <DropdownMenuSeparator />
+                                </DropdownMenuGroup> */}
+                                {/* <DropdownMenuSeparator /> */}
                                 <DropdownMenuItem onClick={logout}>
-                                    <LogOut />
+                                    <LogOut className="mr-3"/>
                                     Log out
                                 </DropdownMenuItem>
                             </DropdownMenuContent>

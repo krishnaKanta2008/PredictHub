@@ -1,35 +1,42 @@
-"use client";
-import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import { Button } from "@/components/ui/button"
 
-interface HeroProps {
-    onSignupClick: () => void;
+const Hero = () => {
+  return (
+      <div >
+          <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+              <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+                  <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-400 dark:ring-gray-700">
+                      PredictHub: Your gateway to smarter market insights and foresight.{' '}
+                      <a href="#" className="font-semibold text-indigo-600">
+                          <span aria-hidden="true" className="absolute inset-0" />
+                          Read more <span aria-hidden="true">&rarr;</span>
+                      </a>
+                  </div>
+              </div>
+              <div className="text-center">
+                  <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl dark:text-gray-400">
+                     Predicting market trends with accuracy
+                  </h1>
+                  <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
+                      Predict tomorrow's market, today.
+                  </p>
+                  <div className="mt-10 flex items-center justify-center gap-x-6">
+                      <Button
+                          onClick={() => {
+                              window.location.href = '/signup';
+                          }}
+                      >
+                          Get started
+                      </Button>
+                      <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+                          Learn more <span aria-hidden="true">→</span>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+  )
 }
 
-export const Hero: React.FC<HeroProps> = ({ onSignupClick }) => {
-    
-    const words = [
-        {
-            text: "Welcome",
-        },
-        {
-            text: "to",
-        },
-        {
-            text: "PredictHub",
-            className: "text-blue-500 dark:text-blue-500",
-        },
-    ];
-    return (
-        <div className="flex flex-col items-center justify-center mt-40 ">
-            <p className="text-neutral-600 dark:text-neutral-200 sm:text-base text-center sm:text-left">
-                The biggest risk is not taking a risk. In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks !
-            </p>
-            <TypewriterEffectSmooth words={words} />
-
-
-            <div> 
-                <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2" onClick={onSignupClick}>Sign Up</button>
-            </div>
-        </div>
-    );
-}
+export default Hero

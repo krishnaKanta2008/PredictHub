@@ -1,8 +1,8 @@
-"use client"
-
-import  StockChart  from "@/components/Dashboard/stock-chart"
+import StockChart from "@/components/Dashboard/stock-chart"
 import { StockMetric } from "@/components/Dashboard/stock-metrics"
-import PredictionCard from "./Prediction-card";
+import { Card } from "@/components/ui/card"
+import Marquee from "@/components/ui/marquee";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface PageProps {
     data: any;
@@ -10,18 +10,60 @@ interface PageProps {
     ticker: string;
 }
 
-export default function Page({ data, loading, ticker }: PageProps) {
+export default function Dashboard({ data, loading, ticker }: PageProps) {
+    const marqueeItems = [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6",
+    ]
+
     if (loading || !data || !data.history) {
-        return <div className="flex h-screen items-center justify-center">Loading...</div>
+        return(
+            <div className="w-full space-y-4">
+                <div className="overflow-hidden w-full">
+                    <Marquee pauseOnHover className="[--duration:20s]">
+                        {marqueeItems.map((item, index) => (
+                            <Skeleton
+                                key={`${item}-${index}`}
+                                className="inline-flex items-center justify-center w-40 h-20 p-4 shrink-0"
+                            >
+                            </Skeleton>
+                        ))}
+                    </Marquee>
+                </div>
+                {/* Bottom Grid Section */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <Skeleton className="flex items-center gap-2 p-6 h-24" />
+                    <Skeleton className="flex items-center gap-2 p-6 h-24" />
+                    <Skeleton className="flex items-center gap-2 p-6 h-24" />
+                    <Skeleton className="lg:col-span-1 lg:row-span-2 flex items-center gap-2 p-6" />
+                    <Skeleton className="col-span-1 sm:col-span-2 lg:col-span-3 p-4 h-64 lg:h-[100vh]" />
+                </div>
+            </div>
+        )
     }
 
     const { current, previous } = data
 
     return (
-        <div className="container h-screen mx-auto p-4">
-            <div className="mb-8">
+        <div className="w-full p-4 space-y-4 relative">
+            <div className="overflow-hidden w-full">
+                <Marquee pauseOnHover className="[--duration:20s]">
+                    {marqueeItems.map((item, index) => (
+                        <Card
+                            key={`${item}-${index}`}
+                            className="inline-flex items-center justify-center w-40 h-20 p-4 shrink-0"
+                        >
+                            {item}
+                        </Card>
+                    ))}
+                </Marquee>
             </div>
-            <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {/* Bottom Grid Section */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <StockMetric
                     title="High"
                     value={current.high}
@@ -40,9 +82,9 @@ export default function Page({ data, loading, ticker }: PageProps) {
                     change={((current.close - previous.close) / previous.close) * 100}
                     prefix="$"
                 />
+                <Card className="lg:col-span-1 lg:row-span-2 flex items-center gap-2 p-6"></Card>
+                <Card className="col-span-1 sm:col-span-2 lg:col-span-3 p-4"><StockChart ticker={ticker} /></Card>
             </div>
-            <StockChart ticker={ticker} />
-            <PredictionCard ticker={ticker} />
         </div>
     )
 }

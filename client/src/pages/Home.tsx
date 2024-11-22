@@ -1,5 +1,5 @@
-import Page from "@/components/Dashboard/Dashboard"
-import   AppHeader   from "@/components/Sidebar/app-header"
+import Dashboard from "@/components/Dashboard/Dashboard"
+import AppHeader from "@/components/Sidebar/app-header"
 import { AppSidebar } from "@/components/Sidebar/app-sidebar"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { fetchStockData } from "@/app/actions"
@@ -26,14 +26,18 @@ const Home = () => {
     <>
       <SidebarProvider>
         <AppSidebar />
-        <SidebarInset>
-          <AppHeader ticker={ticker} setTicker={setTicker} fetchData={fetchData} loading={loading} />
-          <ScrollArea className="h-[calc(100vh-4rem)] ">
-          <div className="bg-stone-900">
-            <Page data={data} loading={loading} ticker={ticker} />
-          </div>
+        {/* <SidebarInset>
+        </SidebarInset> */}
+        <div className="overflow-hidden relative">
+          
+            <AppHeader ticker={ticker} setTicker={setTicker} fetchData={fetchData} loading={loading} />
+          
+          <ScrollArea className="h-[calc(100vh-4rem)] px-2 md:px-4 py-4 md:py-6">
+            <Dashboard data={data} loading={loading} ticker={ticker} />
           </ScrollArea>
-        </SidebarInset>
+          
+        </div>
+
       </SidebarProvider>
     </>
   )

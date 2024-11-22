@@ -1,5 +1,3 @@
-'use client'
-
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/Sidebar/app-sidebar"
@@ -32,7 +30,8 @@ const Support = () => {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <SidebarInset>
+            {/* <SidebarInset> */}
+            <div className="relative">
                 <header className="flex h-16 shrink-0 items-center gap-4 border-b px-4">
                     <SidebarTrigger className="-ml-2" />
                     <Separator orientation="vertical" className="h-6" />
@@ -48,7 +47,7 @@ const Support = () => {
                                 <CardContent className="flex flex-col items-center p-4">
                                     <BarChart2 className="h-6 w-6 mb-2" />
                                     <p className="text-sm font-semibold">Prediction Tools</p>
-                                <Button variant="link" className="text-sm p-0" onClick={() => window.location.href = '/home'}>View Guide</Button>
+                                    <Button variant="link" className="text-sm p-0" onClick={() => window.location.href = '/home'}>View Guide</Button>
                                 </CardContent>
                             </Card>
                             <Card>
@@ -113,7 +112,9 @@ const Support = () => {
                         </form>
                     </SupportSection>
                 </ScrollArea>
-            </SidebarInset>
+            </div>
+            
+            {/* </SidebarInset> */}
         </SidebarProvider>
     )
 }
