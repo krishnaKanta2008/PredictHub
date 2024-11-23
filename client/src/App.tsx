@@ -11,6 +11,7 @@ import Support from "./pages/support";
 import Learning from "./components/Learning/Learning";
 import Watchlist from "./pages/Watchlist";
 import Profile from "./components/Profile/Profile";
+import Feedback from "./pages/Feedback";
 
 const App = () => {
   return (
@@ -23,8 +24,9 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/lstm" element={<Lstm />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
-        <Route path="/support" element={<Support />} />
         <Route path="/learning" element={<Learning />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/feedback" element={<Feedback />} />
         <Route path="/watchlist/:username" element={<Watchlist />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>

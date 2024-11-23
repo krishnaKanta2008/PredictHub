@@ -10,13 +10,14 @@ import {
     LogOut,
     List,
     ChartNoAxesCombined,
-    CircleAlert
+    CircleAlert,
+    Send,
 } from "lucide-react"
 
 import {
     Avatar,
     AvatarFallback,
-    AvatarImage,
+    // AvatarImage,
 } from "@/components/ui/avatar"
 import {
     Collapsible,
@@ -108,7 +109,7 @@ const data = {
     ],
     navSecondary: [
         { title: "Support", url: "/support", icon: CircleAlert },
-        // { title: "Feedback", url: "#", icon: Send },
+        { title: "Feedback", url: "/feedback", icon: Send },
     ],
 
 }
@@ -143,7 +144,7 @@ export function AppSidebar() {
                 }
 
                 const responseData = await response.json()
-                console.log('Fetched user data:', responseData)
+                // console.log('Fetched user data:', responseData)
 
                 // setUserImage(responseData.user?.image || '')
                 setUserName(responseData.username)
