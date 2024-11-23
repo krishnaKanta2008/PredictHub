@@ -9,3 +9,4 @@ keras
 yfinance
 tensorflow
 cloudinary
+plotly
