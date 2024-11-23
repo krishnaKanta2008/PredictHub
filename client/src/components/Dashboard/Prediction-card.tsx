@@ -11,6 +11,8 @@ interface PredictionData {
   ticker: string;
 }
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
 const PredictionCard: React.FC<PredictionCardProps> = ({ ticker }) => {
   const [prediction, setPrediction] = useState<PredictionData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +23,7 @@ const PredictionCard: React.FC<PredictionCardProps> = ({ ticker }) => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(`http://localhost:5000/predict/${ticker}`);
+        const response = await fetch(`${BACKEND_URL}/predict/${ticker}`);
         if (!response.ok) {
           throw new Error('Failed to fetch prediction');
         }

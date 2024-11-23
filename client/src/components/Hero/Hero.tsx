@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 const Hero = () => {
   return (
       <div >
-          <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+          <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56 -mt-3">
               <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                   <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-400 dark:ring-gray-700">
                       PredictHub: Your gateway to smarter market insights and foresight.{' '}

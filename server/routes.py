@@ -1,8 +1,9 @@
-from flask import Blueprint, request, jsonify
-from utils.Auth.auth import signup_handler, signin_handler, github_callback 
+from flask import Blueprint, jsonify
+from utils.Auth.auth import signup_handler, signin_handler 
 from utils.Stock.stock import fetch_stock_data
 from utils.Prediction.LSTM import predict_stock_price
 from utils.User.profile import get_user_profile
+from utils.Watchlist.watchlist import add_to_watchlist ,remove_from_watchlist, get_watchlist
 import numpy as np
 
 auth_routes = Blueprint('auth', __name__)
@@ -21,13 +22,21 @@ def signin():
 def profile(username):
     return get_user_profile(username)
 
-@auth_routes.route('/api/github/callback', methods=['POST'])
-def github():
-    return github_callback()
-
 @stock_routes.route('/fetchStockData/<symbol>', methods=['GET'])
 def fetch_stock_data_route(symbol):
     return fetch_stock_data(symbol)
+
+@stock_routes.route('/watchlist/add/<username>/<ticker>', methods=['POST'])
+def add_to_user_watchlist(username,ticker):
+    return add_to_watchlist(username,ticker)
+
+@stock_routes.route('/watchlist/remove/<username>/<ticker>', methods=['POST'])
+def remove_from_user_watchlist(username,ticker):
+    return remove_from_watchlist(username,ticker)
+
+@stock_routes.route('/watchlist/<username>', methods=['GET'])
+def get_user_watchlist(username):
+    return get_watchlist(username)
 
 @prediction_routes.route('/predict/<ticker>', methods=['GET'])
 def predict_stock(ticker):

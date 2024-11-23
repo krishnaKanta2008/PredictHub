@@ -8,7 +8,7 @@ import {
 
 export function Features() {
     return (
-        <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[20rem] mt-[-70px] p-4 mb-10">
+        <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[30rem] mt-[-70px] p-4 mb-10">
             {items.map((item, i) => (
                 <BentoGridItem
                     key={i}
@@ -25,11 +25,18 @@ export function Features() {
 const Skeleton = () => (
     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
 );
+
+const StockImage = () => (
+    <div className="flex flex-1 rounded-xl overflow-hidden">
+        <img src="https://i.ibb.co/rm8TZ0H/Screenshot-2024-11-23-113510.png" alt="" className="object-cover w-full h-full" />
+    </div>
+);
+
 const items = [
     {
         title: "Stock Price Prediction",
         description: "Using Various Ml | DL models to predict stock prices.",
-        header: <Skeleton />,
+        header: <StockImage />,
         className: "md:col-span-2",
         icon: <IconTimeline className="h-4 w-4 text-neutral-500" />,
     },

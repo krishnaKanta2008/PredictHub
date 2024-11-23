@@ -1,13 +1,13 @@
-import Dashboard from "@/components/Dashboard/Dashboard"
-import AppHeader from "@/components/Sidebar/app-header"
-import { AppSidebar } from "@/components/Sidebar/app-sidebar"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { fetchStockData } from "@/app/actions"
-import { useCallback, useState } from "react"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import Dashboard from "@/components/Dashboard/Dashboard";
+import AppHeader from "@/components/Sidebar/app-header";
+import { AppSidebar } from "@/components/Sidebar/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { fetchStockData } from "@/app/actions";
+import { useCallback, useState, useEffect } from "react";
 
 const Home = () => {
   const [ticker, setTicker] = useState("GOOGL");
+  const [inputTicker, setInputTicker] = useState("GOOGL"); 
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -22,24 +22,30 @@ const Home = () => {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    fetchData(ticker);
+  }, [fetchData, ticker]);
+
   return (
     <>
       <SidebarProvider>
         <AppSidebar />
-        {/* <SidebarInset>
-        </SidebarInset> */}
-        <div className="overflow-hidden relative">
-          
-            <AppHeader ticker={ticker} setTicker={setTicker} fetchData={fetchData} loading={loading} />
-          
-          <ScrollArea className="h-[calc(100vh-4rem)] px-2 md:px-4 py-4 md:py-6">
+        <div className="flex flex-col h-screen overflow-hidden">
+          <AppHeader
+            ticker={ticker}
+            setTicker={setTicker}
+            setInputTicker={setInputTicker}
+            inputTicker={inputTicker}
+            fetchData={fetchData}
+            isLoading={loading}
+          />
+          <div className="flex-1 overflow-y-auto pt-16"> 
             <Dashboard data={data} loading={loading} ticker={ticker} />
-          </ScrollArea>
-          
+          </div>
         </div>
-
       </SidebarProvider>
     </>
-  )
-}
-export default Home
+  );
+};
+
+export default Home;

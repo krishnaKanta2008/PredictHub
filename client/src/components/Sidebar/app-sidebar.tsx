@@ -49,10 +49,19 @@ import {
 } from "@/components/ui/sidebar"
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+    AlertDialog,
+    AlertDialogCancel,
+    AlertDialogHeader,
+    AlertDialogContent,
+    AlertDialogTrigger
+} from "@/components/ui/alert-dialog";
+import { Cross1Icon } from "@radix-ui/react-icons";
+import { ModeSwitch } from "../Theme/mode-switch"
 
 const BACKEND_URL = 'http://localhost:5000'
 
-const storedUsername = localStorage.getItem('predicthub_username')  
+const storedUsername = localStorage.getItem('predicthub_username')
 
 const data = {
     navMain: [
@@ -61,11 +70,11 @@ const data = {
             url: "/home",
             icon: Home,
             isActive: true,
-           
+
         },
         {
             title: "Prediction",
-            url: "#",
+           
             icon: ChartNoAxesCombined,
             items: [
                 { title: "LSTM", url: "/lstm" },
@@ -101,7 +110,7 @@ const data = {
         { title: "Support", url: "/support", icon: CircleAlert },
         // { title: "Feedback", url: "#", icon: Send },
     ],
-    
+
 }
 
 export function AppSidebar() {
@@ -134,11 +143,11 @@ export function AppSidebar() {
                 }
 
                 const responseData = await response.json()
-                console.log('Fetched user data:', responseData) 
+                console.log('Fetched user data:', responseData)
 
                 // setUserImage(responseData.user?.image || '')
                 setUserName(responseData.username)
-                setUserEmail(responseData.email) 
+                setUserEmail(responseData.email)
             } catch (error) {
                 console.error('Error fetching user data', error)
             }
@@ -155,7 +164,7 @@ export function AppSidebar() {
     }
 
     return (
-        <Sidebar variant="inset" className="border-r">
+        <Sidebar variant="inset" className="border-r bg-opacity-90 backdrop-blur-sm">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
@@ -212,32 +221,44 @@ export function AppSidebar() {
                         ))}
                     </SidebarMenu>
                     <SidebarMenu>
-                        
-                            <Collapsible asChild >
-                                <SidebarMenuItem>
-                                    <SidebarMenuButton asChild tooltip="Settings">
-                                    <a href=''>
+
+                        <Collapsible asChild >
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild tooltip="Settings">
+                                    <a>
                                         <Settings />
                                         <span>Setting</span>
-                                    </a> 
-                                    </SidebarMenuButton>
-                                        <>
-                                            <CollapsibleTrigger asChild>
-                                                <SidebarMenuAction className="data-[state=open]:rotate-90">
-                                                    <ChevronRight />
-                                                    <span className="sr-only">Toggle</span>
-                                                </SidebarMenuAction>
-                                            </CollapsibleTrigger>
-                                            <CollapsibleContent>
-                                                <SidebarMenuSub>
-                                                    
-                                                        <SidebarMenuSubItem>
-                                                            <SidebarMenuSubButton asChild>
-                                                                <a>
-                                                                    <span>Theme</span>
-                                                                </a>
-                                                            </SidebarMenuSubButton>
-                                                        </SidebarMenuSubItem>
+                                    </a>
+                                </SidebarMenuButton>
+                                <>
+                                    <CollapsibleTrigger asChild>
+                                        <SidebarMenuAction className="data-[state=open]:rotate-90">
+                                            <ChevronRight />
+                                            <span className="sr-only">Toggle</span>
+                                        </SidebarMenuAction>
+                                    </CollapsibleTrigger>
+                                    <CollapsibleContent>
+                                        <SidebarMenuSub>
+                                            <AlertDialog>
+                                                <AlertDialogTrigger>
+                                                    <SidebarMenuSubItem>
+                                                        <SidebarMenuSubButton asChild>
+                                                            <a>
+                                                                <span>Theme</span>
+                                                            </a>
+                                                        </SidebarMenuSubButton>
+                                                    </SidebarMenuSubItem>
+                                                </AlertDialogTrigger>
+                                                <AlertDialogContent>
+                                                    <div className='flex items-center'>
+                                                        <AlertDialogHeader className='text-2xl'>Change Theme</AlertDialogHeader>
+                                                        <div className='flex-grow'></div>
+                                                        <AlertDialogCancel className="ml-6"><Cross1Icon className='h-3 w-3' /></AlertDialogCancel>
+                                                    </div>
+                                                    <ModeSwitch/>
+                                                </AlertDialogContent>
+                                            </AlertDialog>
+                                            
                                             <SidebarMenuSubItem>
                                                 <SidebarMenuSubButton asChild>
                                                     <a>
@@ -245,14 +266,14 @@ export function AppSidebar() {
                                                     </a>
                                                 </SidebarMenuSubButton>
                                             </SidebarMenuSubItem>
-                                                    
-                                                </SidebarMenuSub>
-                                            </CollapsibleContent>
-                                        </>
-                                   
-                                </SidebarMenuItem>
-                            </Collapsible>
-                      
+
+                                        </SidebarMenuSub>
+                                    </CollapsibleContent>
+                                </>
+
+                            </SidebarMenuItem>
+                        </Collapsible>
+
                     </SidebarMenu>
                 </SidebarGroup>
                 <SidebarGroup className="mt-auto">
@@ -303,10 +324,11 @@ export function AppSidebar() {
                                 sideOffset={4}
                             >
                                 <DropdownMenuLabel className="p-0 font-normal">
-                                    <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                                    <a href={`/profile/${userName}`}>
+                                        <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                         <Avatar className="h-8 w-8 rounded-lg">
                                             {/* <AvatarImage src={userImage || undefined} alt={userName || "User"} /> */}
-                                            <AvatarFallback className="rounded-lg">{userName?.slice(0,2)}</AvatarFallback>
+                                            <AvatarFallback className="rounded-lg">{userName?.slice(0, 2)}</AvatarFallback>
                                         </Avatar>
                                         <div className="grid flex-1 text-left text-sm leading-tight">
                                             <span className="truncate font-semibold">
@@ -317,17 +339,12 @@ export function AppSidebar() {
                                             </span>
                                         </div>
                                     </div>
+                                    </a>
+                                    
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                {/* <DropdownMenuGroup>
-                                    <DropdownMenuItem>
-                                        <BadgeCheck />
-                                        Account
-                                    </DropdownMenuItem>
-                                </DropdownMenuGroup> */}
-                                {/* <DropdownMenuSeparator /> */}
                                 <DropdownMenuItem onClick={logout}>
-                                    <LogOut className="mr-3"/>
+                                    <LogOut className="mr-3" />
                                     Log out
                                 </DropdownMenuItem>
                             </DropdownMenuContent>

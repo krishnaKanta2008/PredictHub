@@ -13,7 +13,7 @@ export function StockMetric({ title, value, change, prefix = "" }: MetricProps) 
 
     return (
         <Card>
-            <CardContent className="p-6">
+            <CardContent className="mt-[20px]">
                 <div className="flex items-center gap-2">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
                         {title[0].toUpperCase()}

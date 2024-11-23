@@ -9,6 +9,8 @@ interface StockChartProps {
     ticker: string
 }
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
 const StockChart: React.FC<StockChartProps> = ({ ticker = "GOOGL" }) => {
     const [graphData, setGraphData] = useState<{ data: Data[], layout: Partial<Layout> } | null>(null)
     const [error, setError] = useState<string | null>(null)
@@ -16,13 +18,11 @@ const StockChart: React.FC<StockChartProps> = ({ ticker = "GOOGL" }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/fetchStockData/${ticker}`)
+                const response = await fetch(`${BACKEND_URL}/fetchStockData/${ticker}`)
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`)
                 }
                 const data = await response.json()
-                console.log('Received data:', data) 
-
                 if (Array.isArray(data.history)) {
                     const chartData = {
                         data: [{

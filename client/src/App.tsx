@@ -9,7 +9,7 @@ import PrivacyPolicy from "./pages/Privacypolicy";
 import Lstm from "./pages/Lstm";
 import Support from "./pages/support";
 import Learning from "./components/Learning/Learning";
-import Watchlist from "./components/Watchlist/Watchlist";
+import Watchlist from "./pages/Watchlist";
 import Profile from "./components/Profile/Profile";
 
 const App = () => {
