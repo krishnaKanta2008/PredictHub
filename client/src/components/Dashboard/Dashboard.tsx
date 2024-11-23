@@ -7,6 +7,14 @@ import { useEffect, useRef } from 'react';
 import TopStocks from "./TopStocks";
 import Marquee from "@/components/ui/marquee";
 
+interface StockData {
+    name: string;
+    symbol: string;
+    stock_exchange: {
+        acronym: string;
+        country: string;
+    };
+}
 
 interface PageProps {
     data: StockData | null;
@@ -35,9 +43,43 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
         "Item 4",
         "Item 5",
         "Item 6",
-    ]
-    if (loading || !data ) {
-        return(
+    ];
+
+    const container = useRef<HTMLDivElement | null>(null);
+    const webAppTheme = localStorage.getItem('vite-ui-theme');
+
+    useEffect(() => {
+        if (!container.current) return;
+
+        const script = document.createElement("script");
+        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+        script.type = "text/javascript";
+        script.async = true;
+        script.innerHTML = `{
+            "autosize": true,
+            "symbol": "NASDAQ:${ticker || "GOOGL"}",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "${webAppTheme}",
+            "style": "1",
+            "locale": "en",
+            "backgroundColor": "${webAppTheme === 'dark' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0)'}",
+            "gridColor": "rgba(201, 218, 248, 0.06)",
+            "hide_top_toolbar": true,
+            "allow_symbol_change": true,
+            "calendar": false,
+            "hide_volume": true,
+            "support_host": "https://www.tradingview.com"
+        }`;
+        container.current.appendChild(script);
+
+        return () => {
+            container.current?.removeChild(script);
+        };
+    }, [ticker, webAppTheme]);
+
+    if (loading || !data) {
+        return (
             <div className="w-full space-y-4 p-4">
                 <div className="overflow-hidden w-full">
                     <Marquee pauseOnHover className="[--duration:20s]">
@@ -50,7 +92,7 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
                         ))}
                     </Marquee>
                 </div>
-               
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <Skeleton className="flex items-center gap-2 p-6 h-24" />
                     <Skeleton className="flex items-center gap-2 p-6 h-24" />
@@ -59,55 +101,15 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
                     <Skeleton className="col-span-1 sm:col-span-2 lg:col-span-3 p-4 h-[600px]" />
                 </div>
             </div>
-        )
+        );
     }
 
-    const { current, previous } = data
-
-    const webAppTheme = localStorage.getItem('vite-ui-theme');
-
-    const container = useRef<HTMLDivElement | null>(null);
-
-
-    useEffect(() => {
-        if (!container.current) return;
-
-        const script = document.createElement("script");
-        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-        script.type = "text/javascript";
-        script.async = true;
-        script.innerHTML = `
-        {
-          "autosize": true,
-          "symbol": "NASDAQ:${ticker || "GOOGL"}",
-          "interval": "D",
-          "timezone": "Etc/UTC",
-          "theme": "${webAppTheme}",
-          "style": "1",
-          "locale": "en",
-          "backgroundColor": "${webAppTheme === 'dark' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0)'}",
-          "gridColor": "rgba(201, 218, 248, 0.06)",
-          "hide_top_toolbar": true,
-          "allow_symbol_change": true,
-          "calendar": false,
-          "hide_volume": true,
-          "support_host": "https://www.tradingview.com"
-        }`;
-        container.current.appendChild(script);
-
-        return () => {
-            container.current?.removeChild(script);
-        };
-    }, [ticker, webAppTheme]);
-
+    const { current, previous } = data;
 
     return (
         <div className="w-full p-4 space-y-4 relative">
-            {/* <TopStocks /> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1 flex">
-                <StockInfo
-                    ticker={ticker}
-                />
+                <StockInfo ticker={ticker} />
                 <StockMetric
                     title="High"
                     value={current.high}
@@ -136,5 +138,5 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
                 </Card>
             </div>
         </div>
-    )
+    );
 }
