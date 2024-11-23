@@ -16,10 +16,35 @@ class User:
             "username": data['username'],
             "email": data['email'],
             "password": data['password'],
-            "watchlist": [] 
+            "watchlist": [],
+            "profileImage": None,
+            "profileBanner": None,
+            "bio": None,
+            "location": None
         }
         db.users.insert_one(user_data)
         return user_data
+    
+    @staticmethod
+    def update_profile(username, data):
+        update_fields = {}
+        # Only update fields that are provided
+        if 'profileImage' in data:
+            update_fields['profileImage'] = data['profileImage']
+        if 'profileBanner' in data:
+            update_fields['profileBanner'] = data['profileBanner']
+        if 'bio' in data:
+            update_fields['bio'] = data['bio']
+        if 'location' in data:
+            update_fields['location'] = data['location']
+        
+        if update_fields:
+            result = db.users.update_one(
+                {"username": username},
+                {"$set": update_fields}
+            )
+            return {"success": True if result.modified_count > 0 else False}
+        return {"success": False, "message": "No fields to update"}
 
     @staticmethod
     def validate_user(username, password):

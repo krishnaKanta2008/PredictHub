@@ -23,6 +23,17 @@ export function Features() {
 
         </div>
     );
+    const WatchlistImage = () => (
+        <div className="flex flex-1 rounded-xl overflow-hidden">
+            {
+                currentTheme === "dark" ? (
+                    <img src="https://i.ibb.co/37cWytt/Screenshot-2024-11-23-203216.png" alt="watchlist_dark" className="object-cover w-full h-full" />
+                ) : (
+                        <img src="https://i.ibb.co/37cWytt/Screenshot-2024-11-23-203216.png" alt="watchlist_light" className="object-cover w-full h-full" />
+                )
+            }
+        </div>
+    );
     const Skeleton = () => (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
     );
@@ -37,13 +48,7 @@ export function Features() {
             className: "md:col-span-2",
             icon: <IconTimeline className="h-4 w-4 text-neutral-500" />,
         },
-        {
-            title: "Add your favourite stock",
-            description: "Maintain your favourite stock and get daily updates.",
-            header: <Skeleton />,
-            className: "md:col-span-1",
-            icon: <IconHeartPlus className="h-4 w-4 text-neutral-500" />,
-        },
+        
         {
             title: "Learning material and FAQ",
             description: "Read and learn about stock market.",
@@ -56,9 +61,16 @@ export function Features() {
             description:
                 "Chat with our chatbot to get the latest updates on stock market.",
             header: <Skeleton />,
-            className: "md:col-span-2",
+            className: "md:col-span-1",
             icon: <IconMessageChatbotFilled className="h-4 w-4 text-neutral-500" />,
         },
+        {
+            title: "Add your favourite stock",
+            description: "Maintain your favourite stock and get daily updates.",
+            header: <WatchlistImage />,
+            className: "md:col-span-2",
+            icon: <IconHeartPlus className="h-4 w-4 text-neutral-500" />,
+        }
     ];
     return (
         <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[30rem] mt-[-70px] p-4 mb-10">

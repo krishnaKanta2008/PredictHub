@@ -10,7 +10,7 @@ import Lstm from "./pages/Lstm";
 import Support from "./pages/support";
 import Learning from "./components/Learning/Learning";
 import Watchlist from "./pages/Watchlist";
-import Profile from "./components/Profile/Profile";
+import Profile from "./pages/Profile";
 import Feedback from "./pages/Feedback";
 
 const App = () => {

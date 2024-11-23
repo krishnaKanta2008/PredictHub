@@ -108,6 +108,7 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
 
     return (
         <div className="w-full p-4 space-y-4 relative">
+            {/* <TopStocks /> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1 flex">
                 <StockInfo ticker={ticker} />
                 <StockMetric

@@ -24,7 +24,7 @@ export function FeedbackForm({ onSubmit, onClose }: FeedbackFormProps) {
     }
 
     return (
-        <Card className="w-full max-w-md">
+        <Card className="w-full max-w-md border-none">
             <form onSubmit={handleSubmit}>
                 <CardHeader>
                     <h2 className="text-center text-xl font-semibold">
@@ -71,14 +71,6 @@ export function FeedbackForm({ onSubmit, onClose }: FeedbackFormProps) {
                 <CardFooter className="flex flex-col space-y-4">
                     <Button type="submit" className="w-full" disabled={rating === 0}>
                         Rate now
-                    </Button>
-                    <Button
-                        type="button"
-                        variant="ghost"
-                        className="text-sm text-muted-foreground"
-                        onClick={onClose}
-                    >
-                        Maybe later
                     </Button>
                 </CardFooter>
             </form>

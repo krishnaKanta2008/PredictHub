@@ -59,6 +59,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { ModeSwitch } from "../Theme/mode-switch"
+import UpdateProfile from "../Settings/AccountSettings"
+import { Button } from "../ui/button"
+import { FeedbackForm } from "../Feedback/FeedbackForm"
 
 const BACKEND_URL = 'http://localhost:5000'
 
@@ -95,21 +98,9 @@ const data = {
             isActive: true,
 
         },
-        // {
-        //     title: "Settings",
-        //     url: "#",
-        //     icon: Settings,
-        //     items: [
-        //         { title: "Theme", url: "#" },
-        //         { title: "Account", url: "#" },
-        //         // { title: "Edit Account", url: "#" },
-        //         // { title: "Limits", url: "#" },
-        //     ],
-        // },
     ],
     navSecondary: [
         { title: "Support", url: "/support", icon: CircleAlert },
-        { title: "Feedback", url: "/feedback", icon: Send },
     ],
 
 }
@@ -259,14 +250,27 @@ export function AppSidebar() {
                                                     <ModeSwitch/>
                                                 </AlertDialogContent>
                                             </AlertDialog>
+                                            <AlertDialog>
+                                                <AlertDialogTrigger>
+                                                    <SidebarMenuSubItem>
+                                                        <SidebarMenuSubButton asChild>
+                                                            <a>
+                                                                <span>Account</span>
+                                                            </a>
+                                                        </SidebarMenuSubButton>
+                                                    </SidebarMenuSubItem>
+                                                </AlertDialogTrigger>
+                                                <AlertDialogContent>
+                                                    <div className='flex items-center'>
+                                                        <AlertDialogHeader className='text-2xl'>Update Profile</AlertDialogHeader>
+                                                        <div className='flex-grow'></div>
+                                                        <AlertDialogCancel className="ml-6"><Cross1Icon className='h-3 w-3' /></AlertDialogCancel>
+                                                    </div>
+                                                    <UpdateProfile />
+                                                </AlertDialogContent>
+                                            </AlertDialog>
                                             
-                                            <SidebarMenuSubItem>
-                                                <SidebarMenuSubButton asChild>
-                                                    <a>
-                                                        <span>Account</span>
-                                                    </a>
-                                                </SidebarMenuSubButton>
-                                            </SidebarMenuSubItem>
+                                            
 
                                         </SidebarMenuSub>
                                     </CollapsibleContent>
@@ -290,6 +294,27 @@ export function AppSidebar() {
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
+                            <AlertDialog>
+                                <AlertDialogTrigger>
+                                    <SidebarMenuItem>
+                                        <SidebarMenuButton asChild size="sm">
+                                            <a>
+                                                <Send />
+                                                <span>Feedback</span>
+                                            </a>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <div className='flex items-center'>
+                                        <AlertDialogHeader className='text-2xl'>Feedback Form</AlertDialogHeader>
+                                        <div className='flex-grow'></div>
+                                        <AlertDialogCancel className="ml-6"><Cross1Icon className='h-3 w-3' /></AlertDialogCancel>
+                                    </div>
+                                    <FeedbackForm />
+                                </AlertDialogContent>
+                            </AlertDialog>
+                            
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
@@ -304,7 +329,6 @@ export function AppSidebar() {
                                     className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                                 >
                                     <Avatar className="h-8 w-8 rounded-lg">
-                                        {/* <AvatarImage src={userImage || undefined} alt={userName || "User"} /> */}
                                         <AvatarFallback className="rounded-lg">{userName?.slice(0, 2)}</AvatarFallback>
                                     </Avatar>
                                     <div className="grid flex-1 text-left text-sm leading-tight">
