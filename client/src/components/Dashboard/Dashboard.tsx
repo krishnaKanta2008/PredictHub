@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import StockDetails from "./StockDetails";
 import { StockInfo } from "./StockInfo";
 import { useEffect, useRef } from 'react';
-import TopStocks from "./TopStocks";
+// import TopStocks from "./TopStocks";
 import Marquee from "@/components/ui/marquee";
 
 interface StockData {

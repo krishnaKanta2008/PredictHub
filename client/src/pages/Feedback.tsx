@@ -10,12 +10,10 @@ import {
 } from "@/components/ui/sidebar"
 
 export default function FeedbackPage() {
-    const handleSubmitFeedback = (rating: number, message: string) => {
-        // Here you would typically send this data to your backend
-        console.log("Rating:", rating, "Message:", message)
-        // You could show a success toast here
-        alert("Thank you for your feedback!")
-    }
+    // const handleSubmitFeedback = (rating: number, message: string) => {
+    //     console.log("Rating:", rating, "Message:", message)
+    //     alert("Thank you for your feedback!")
+    // }
 
     return (
         <SidebarProvider>
@@ -30,10 +28,7 @@ export default function FeedbackPage() {
                 </header>
                 <main className="flex-1 overflow-y-auto p-6">
                     <div className="mx-auto max-w-md">
-                        <FeedbackForm
-                            onSubmit={handleSubmitFeedback}
-                            onClose={() => window.history.back()}
-                        />
+                        <FeedbackForm/>
                     </div>
                 </main>
             </SidebarInset>

@@ -8,24 +8,22 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 
-interface FeedbackFormProps {
-    onSubmit?: (rating: number, message: string) => void
-    onClose?: () => void
-}
-
-export function FeedbackForm({ onSubmit, onClose }: FeedbackFormProps) {
+export function FeedbackForm() {
     const [rating, setRating] = React.useState<number>(0)
     const [hoveredRating, setHoveredRating] = React.useState<number>(0)
     const [message, setMessage] = React.useState("")
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        onSubmit?.(rating, message)
-    }
+    // const handleSubmit = (e: React.FormEvent) => {
+    //     e.preventDefault()
+    //     const onSubmit = (rating: number, message: string) => {
+    //         console.log("Rating:", rating, "Message:", message)
+    //     }
+    //     onSubmit(rating, message)
+    // }
 
     return (
         <Card className="w-full max-w-md border-none">
-            <form onSubmit={handleSubmit}>
+            <form >
                 <CardHeader>
                     <h2 className="text-center text-xl font-semibold">
                         Your opinion matters to us!

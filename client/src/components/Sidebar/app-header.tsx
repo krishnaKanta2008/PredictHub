@@ -46,6 +46,7 @@ export default function AppHeader({
         });
 
         // Update the ticker and fetch data
+        console.log(ticker)
         setTicker(inputTicker.trim());
         await fetchData(inputTicker.trim());
     };

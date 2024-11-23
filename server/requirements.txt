@@ -7,6 +7,5 @@ requests
 scikit-learn
 keras
 yfinance
-plotly
 tensorflow
 cloudinary

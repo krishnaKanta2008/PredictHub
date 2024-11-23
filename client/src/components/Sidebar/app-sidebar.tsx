@@ -60,7 +60,6 @@ import {
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { ModeSwitch } from "../Theme/mode-switch"
 import UpdateProfile from "../Settings/AccountSettings"
-import { Button } from "../ui/button"
 import { FeedbackForm } from "../Feedback/FeedbackForm"
 
 const BACKEND_URL = 'http://localhost:5000'
