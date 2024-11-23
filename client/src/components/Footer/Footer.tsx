@@ -6,22 +6,20 @@ const Footer = () => {
                   <div className="md:flex md:justify-between">
                       <div className="mb-6 md:mb-0">
                           <a href="/" className="flex items-center">
-                              {/* <img
-                                  src="https://flowbite.com/docs/images/logo.svg"
-                                  className="h-8 me-3"
-                                  alt="FlowBite Logo"
-                              /> */}
-                              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                              📈
+                              <span className="ml-1 self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                                   PredictHub
                               </span>
                           </a>
+                          <p>PredictHub is a sophisticated stock price prediction platform.<br/>The application leverages neural networks to forecast stock prices.</p>
+
                       </div>
                       <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                           <div>
                               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                                   Follow us
                               </h2>
-                              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                              <ul className="text-gray-500 dark:text-gray-400 font-medium text-sm">
                                   <li className="mb-4">
                                       <a
                                           href="https://github.com/krishnaKanta2008"
@@ -44,7 +42,7 @@ const Footer = () => {
                               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                                   Legal
                               </h2>
-                              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                              <ul className="text-gray-500 dark:text-gray-400 font-medium text-sm">
                                   <li className="mb-4">
                                       <a href="/privacypolicy" className="hover:underline">
                                           Privacy Policy
@@ -59,8 +57,8 @@ const Footer = () => {
                           </div>
                       </div>
                   </div>
-                  <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                  <div className="sm:flex sm:items-center sm:justify-between">
+                  <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+                  <div className="sm:flex sm:items-center sm:justify-center">
                       <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
                           © 2024{" "}
                           <a href="/" className="hover:underline">
@@ -68,7 +66,7 @@ const Footer = () => {
                           </a>
                           . All Rights Reserved.
                       </span>
-                      <div className="flex mt-4 sm:justify-center sm:mt-0">
+                      {/* <div className="flex mt-4 sm:justify-center sm:mt-0">
                           
                           <a
                               href="#"
@@ -106,7 +104,7 @@ const Footer = () => {
                               <span className="sr-only">GitHub account</span>
                           </a>
                          
-                      </div>
+                      </div> */}
                   </div>
               </div>
           </footer>
