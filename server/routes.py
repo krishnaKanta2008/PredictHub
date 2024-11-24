@@ -10,6 +10,10 @@ auth_routes = Blueprint('auth', __name__)
 stock_routes = Blueprint('stock', __name__)
 prediction_routes = Blueprint('prediction', __name__)
 
+@auth_routes.route('/', methods=['GET'])
+def welcome():
+    return jsonify({"message": "welcome to PredictHub Server"})
+
 @auth_routes.route('/signup', methods=['POST'])
 def signup():
     return signup_handler()

@@ -77,6 +77,7 @@ const data = {
         },
         {
             title: "Prediction",
+            isActive: true,
            
             icon: ChartNoAxesCombined,
             items: [

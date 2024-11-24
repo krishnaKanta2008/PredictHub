@@ -27,9 +27,9 @@ export function Features() {
         <div className="flex flex-1 rounded-xl overflow-hidden">
             {
                 currentTheme === "dark" ? (
-                    <img src="https://i.ibb.co/37cWytt/Screenshot-2024-11-23-203216.png" alt="watchlist_dark" className="object-cover w-full h-full" />
+                    <img src="https://i.ibb.co/XzJsdwt/Screenshot-2024-11-24-111016.png" alt="watchlist_dark" className="object-cover w-full h-full" />
                 ) : (
-                        <img src="https://i.ibb.co/37cWytt/Screenshot-2024-11-23-203216.png" alt="watchlist_light" className="object-cover w-full h-full" />
+                    <img src="https://i.ibb.co/yqcBjH2/Screenshot-2024-11-24-111037.png" alt="watchlist_light" className="object-cover w-full h-full" />
                 )
             }
         </div>
