@@ -12,6 +12,7 @@ import Learning from "./components/Learning/Learning";
 import Watchlist from "./pages/Watchlist";
 import Profile from "./pages/Profile";
 import Feedback from "./pages/Feedback";
+import Prediction from "./pages/Prediction";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/profile/:username" element={<Profile />} /> 
         <Route path="/signin" element={<Signin/>} /> 
         <Route path="/home" element={<Home />} />
+        <Route path="/prediction-techniques" element={<Prediction />} />
         <Route path="/lstm" element={<Lstm />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
         <Route path="/learning" element={<Learning />} />

@@ -78,7 +78,7 @@ const data = {
         {
             title: "Prediction",
             isActive: true,
-           
+            url: "/prediction-techniques",
             icon: ChartNoAxesCombined,
             items: [
                 { title: "LSTM", url: "/lstm" },
@@ -156,7 +156,7 @@ export function AppSidebar() {
     }
 
     return (
-        <Sidebar variant="inset" className="border-r">
+        <Sidebar className="border-r">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
