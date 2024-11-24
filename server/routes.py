@@ -10,10 +10,6 @@ auth_routes = Blueprint('auth', __name__)
 stock_routes = Blueprint('stock', __name__)
 prediction_routes = Blueprint('prediction', __name__)
 
-@auth_routes.route('/', methods=['GET'])
-def welcome():
-    return jsonify({"message": "welcome to PredictHub Server"})
-
 @auth_routes.route('/signup', methods=['POST'])
 def signup():
     return signup_handler()
@@ -50,27 +46,27 @@ def remove_from_user_watchlist(username,ticker):
 def get_user_watchlist(username):
     return get_watchlist(username)
 
-@prediction_routes.route('/predict/<ticker>', methods=['GET'])
-def predict_stock(ticker):
-    try:
-        # Get prediction
-        result = predict_stock_price(ticker)
+# @prediction_routes.route('/predict/<ticker>', methods=['GET'])
+# def predict_stock(ticker):
+#     try:
+#         # Get prediction
+#         result = predict_stock_price(ticker)
         
-        # Convert numpy values to Python native types
-        if isinstance(result, np.ndarray):
-            result = result.tolist()
-        elif isinstance(result, np.generic):
-            result = result.item()
+#         # Convert numpy values to Python native types
+#         if isinstance(result, np.ndarray):
+#             result = result.tolist()
+#         elif isinstance(result, np.generic):
+#             result = result.item()
             
-        # Return as JSON with proper structure
-        return jsonify({
-            "success": True,
-            "ticker": ticker,
-            "predicted_price": result
-        })
+#         # Return as JSON with proper structure
+#         return jsonify({
+#             "success": True,
+#             "ticker": ticker,
+#             "predicted_price": result
+#         })
         
-    except Exception as e:
-        return jsonify({
-            "success": False,
-            "error": str(e)
-        }), 500
+#     except Exception as e:
+#         return jsonify({
+#             "success": False,
+#             "error": str(e)
+#         }), 500
