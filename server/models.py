@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = MongoClient(os.getenv('MONGODB_URI'))
+client = MongoClient('mongodb+srv://krishnakanta2008:krishna2008@cluster0.7rimb.mongodb.net')
 db = client['PredictHub']  
 
 class User:
