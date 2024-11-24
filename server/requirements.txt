@@ -4,9 +4,6 @@ pymongo
 python-dotenv
 gunicorn
 requests
-# scikit-learn
-keras
 yfinance
-# tensorflow
 cloudinary
 plotly

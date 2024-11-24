@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area"
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
 const StockDetails = ({ ticker }: { ticker: string }) => {
     const [data, setData] = useState<any>(null);
 
@@ -8,7 +10,7 @@ const StockDetails = ({ ticker }: { ticker: string }) => {
         if (!ticker) return;
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/fetchStockData/${ticker}`);
+                const response = await fetch(`${BACKEND_URL}/fetchStockData/${ticker}`);
                 const result = await response.json();
                 setData(result);
             } catch (error) {

@@ -43,7 +43,7 @@ const ProfileComponent = () => {
   const copyToClipboard = async () => {
     try {
       if (profileData?.username) {
-        await navigator.clipboard.writeText(`https://www.devhub.page/user/${profileData.username}`);
+        await navigator.clipboard.writeText(`https://predicthub.vercel.app/profile/${profileData.username}`);
       }
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -133,7 +133,7 @@ const ProfileComponent = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground break-all">
-                  {`https://www.devhub.page/user/${profileData?.username}`}
+                  {`predicthub.vercel.app/profile/${profileData?.username}`}
                 </p>
               </CardContent>
             </Card>

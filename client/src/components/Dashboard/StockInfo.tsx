@@ -2,6 +2,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useEffect, useState } from "react";
 import React from "react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
 export const StockInfo: React.FC<{ ticker: string }> = ({ ticker }) => {
     const [data, setData] = useState<any>(null);
 
@@ -9,7 +11,7 @@ export const StockInfo: React.FC<{ ticker: string }> = ({ ticker }) => {
         if (!ticker) return;
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/fetchStockData/${ticker}`);
+                const response = await fetch(`${BACKEND_URL}/fetchStockData/${ticker}`);
                 const result = await response.json();
                 setData(result);
             } catch (error) {

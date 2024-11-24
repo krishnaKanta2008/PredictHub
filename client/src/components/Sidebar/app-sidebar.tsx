@@ -62,7 +62,7 @@ import { ModeSwitch } from "../Theme/mode-switch"
 import UpdateProfile from "../Settings/AccountSettings"
 import { FeedbackForm } from "../Feedback/FeedbackForm"
 
-const BACKEND_URL = 'http://localhost:5000'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 const storedUsername = localStorage.getItem('predicthub_username')
 
