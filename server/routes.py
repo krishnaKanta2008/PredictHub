@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from utils.Auth.auth import signup_handler, signin_handler 
 from utils.Stock.stock import fetch_stock_data
-from utils.Prediction.LSTM import predict_stock_price
+# from utils.Prediction.LSTM import predict_stock_price
 from utils.User.profile import get_user_profile, get_profile_details, update_profile
 from utils.Watchlist.watchlist import add_to_watchlist ,remove_from_watchlist, get_watchlist
 import numpy as np
