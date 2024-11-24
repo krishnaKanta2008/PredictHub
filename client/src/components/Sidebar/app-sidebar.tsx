@@ -156,13 +156,13 @@ export function AppSidebar() {
     }
 
     return (
-        <Sidebar variant="inset" className="border-r bg-opacity-90 backdrop-blur-sm">
+        <Sidebar variant="inset" className="border-r">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
                             <a href="/">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                                <div >
                                     <span className="text-2xl">📈</span>
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">

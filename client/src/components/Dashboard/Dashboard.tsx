@@ -5,10 +5,7 @@ import StockDetails from "./StockDetails";
 import { StockInfo } from "./StockInfo";
 import { useEffect, useRef } from 'react';
 // import TopStocks from "./TopStocks";
-// import { CirclePlus } from 'lucide-react';
 import Marquee from "@/components/ui/marquee";
-// import { toast } from "sonner";
-// import { useState } from "react";
 
 // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
@@ -79,38 +76,7 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
     const { current, previous } = data;
     const container = useRef<HTMLDivElement | null>(null);
     const webAppTheme = localStorage.getItem('vite-ui-theme');
-    // const [addingTicker, setAddingTicker] = useState<string | null>(null);
-
-    // const addToWatchlist = async (ticker: string) => {
-    //     const username = localStorage.getItem('predicthub_username');
-    //     if (!username) {
-    //         toast.error('Please login first');
-    //         return;
-    //     }
-
-    //     setAddingTicker(ticker);
-    //     try {
-    //         const response = await fetch(`${BACKEND_URL}/watchlist/add/${username}/${ticker}`, {
-    //             method: 'POST'
-    //         });
-    //         const data = await response.json();
-
-    //         if (!response.ok) {
-    //             throw new Error(data.message || 'Failed to add to watchlist');
-    //         }
-
-    //         if (data.success) {
-    //             toast.success(data.message);
-    //         } else {
-    //             toast.warning(data.message);
-    //         }
-    //     } catch (err) {
-    //         toast.error(err instanceof Error ? err.message : 'Failed to add to watchlist');
-    //         console.error('Error adding to watchlist:', err);
-    //     } finally {
-    //         setAddingTicker(null);
-    //     }
-    // };
+   
 
     useEffect(() => {
         if (!container.current) return;
@@ -167,13 +133,6 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
                 />
                 <div className="col-span-1 sm:col-span-2 lg:col-span-3 h-[600px] overflow-hidden">
                     <div ref={container} className="tradingview-widget-container h-full w-full">
-                        {/* <button
-                            onClick={() => addToWatchlist(ticker)}
-                            aria-label={`Remove ${ticker} from watchlist`}
-                            className="absolute bottom-[56px] left-[28px] bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-600 z-10"
-                        >
-                            <CirclePlus className={`w-5 h-5 ${addingTicker === ticker ? 'animate-pulse' : ''}`} />
-                        </button> */}
                     </div>
                     
                 </div>
