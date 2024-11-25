@@ -5,4 +5,8 @@ python-dotenv
 gunicorn
 requests
 yfinance
-cloudinary
+plotly
+tensorflow
+keras
+numpy
+scikit-learn
