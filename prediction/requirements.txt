@@ -10,3 +10,4 @@ tensorflow
 keras
 numpy
 scikit-learn
+pandas
