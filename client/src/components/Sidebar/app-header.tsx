@@ -71,6 +71,7 @@ export default function AppHeader({
             toast.error("Invalid ticker");
             return;
         }
+        console.log(ticker);
         setTicker(inputTicker.trim().toUpperCase());
         await fetchData(inputTicker.trim().toUpperCase());
     };
