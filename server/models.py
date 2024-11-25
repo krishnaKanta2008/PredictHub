@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
+from bson import ObjectId
 
 load_dotenv()
 
@@ -91,3 +92,17 @@ class User:
         if not user:
             return {"success": False, "message": "User not found"}
         return {"success": True, "watchlist": user.get("watchlist", [])}
+    
+class Contact:
+    @staticmethod
+    def save_message(data):
+        contact_data = {
+            "name": data['name'],
+            "email": data['email'],
+            "subject" : data['subject'],
+            "message": data['message']
+        }
+        result = db.contacts.insert_one(contact_data)
+        contact_data["_id"] = str(result.inserted_id)
+        return contact_data
+

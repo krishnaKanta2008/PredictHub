@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from routes import auth_routes , stock_routes 
+from routes import auth_routes , stock_routes , contact_routes
 import gunicorn
 
 app = Flask(__name__)
@@ -15,6 +15,7 @@ CORS(app, supports_credentials=True, resources={
 
 app.register_blueprint(auth_routes)  
 app.register_blueprint(stock_routes)
+app.register_blueprint(contact_routes)
 
 @app.route('/')
 def welcome():

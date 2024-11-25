@@ -3,10 +3,12 @@ from utils.Auth.auth import signup_handler, signin_handler
 from utils.Stock.stock import fetch_stock_data
 from utils.User.profile import get_user_profile, get_profile_details, update_profile
 from utils.Watchlist.watchlist import add_to_watchlist ,remove_from_watchlist, get_watchlist
+from utils.Contact.contact import save_contact_message
 import numpy as np
 
 auth_routes = Blueprint('auth', __name__)
 stock_routes = Blueprint('stock', __name__)
+contact_routes = Blueprint('contact', __name__)
 
 @auth_routes.route('/signup', methods=['POST'])
 def signup():
@@ -44,3 +46,6 @@ def remove_from_user_watchlist(username,ticker):
 def get_user_watchlist(username):
     return get_watchlist(username)
 
+@contact_routes.route('/contact', methods=['POST'])
+def contact():
+    return save_contact_message()

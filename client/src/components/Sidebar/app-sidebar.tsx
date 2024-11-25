@@ -6,7 +6,7 @@ import {
     Settings,
     ChevronRight,
     ChevronsUpDown,
-    // LifeBuoy,
+    UserPen,
     LogOut,
     List,
     ChartNoAxesCombined,
@@ -17,7 +17,6 @@ import {
 import {
     Avatar,
     AvatarFallback,
-    // AvatarImage,
 } from "@/components/ui/avatar"
 import {
     Collapsible,
@@ -27,7 +26,6 @@ import {
 import {
     DropdownMenu,
     DropdownMenuContent,
-    // DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
@@ -61,6 +59,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { ModeSwitch } from "../Theme/mode-switch"
 import UpdateProfile from "../Settings/AccountSettings"
 import { FeedbackForm } from "../Feedback/FeedbackForm"
+import Contact from "../Contact/Contact"
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
@@ -271,9 +270,6 @@ export function AppSidebar() {
                                                     <UpdateProfile />
                                                 </AlertDialogContent>
                                             </AlertDialog>
-                                            
-                                            
-
                                         </SidebarMenuSub>
                                     </CollapsibleContent>
                                 </>
@@ -316,7 +312,26 @@ export function AppSidebar() {
                                     <FeedbackForm />
                                 </AlertDialogContent>
                             </AlertDialog>
-                            
+                            <AlertDialog>
+                                <AlertDialogTrigger>
+                                    <SidebarMenuItem>
+                                        <SidebarMenuButton asChild size="sm">
+                                            <a>
+                                                <UserPen />
+                                                <span>Contact</span>
+                                            </a>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <div className='flex items-center'>
+                                        <AlertDialogHeader className='text-2xl'>Contact Form</AlertDialogHeader>
+                                        <div className='flex-grow'></div>
+                                        <AlertDialogCancel className="ml-6"><Cross1Icon className='h-3 w-3' /></AlertDialogCancel>
+                                    </div>
+                                    <Contact />
+                                </AlertDialogContent>
+                            </AlertDialog>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>

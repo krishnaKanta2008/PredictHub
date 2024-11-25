@@ -5,8 +5,6 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { ReactNode } from "react"
 import { BarChart2, HelpCircle, FileText } from 'lucide-react'
 
@@ -30,7 +28,6 @@ const Support = () => {
     return (
         <SidebarProvider>
             <AppSidebar />
-            {/* <SidebarInset> */}
             <div className="relative">
                 <header className="flex h-16 shrink-0 items-center gap-4 border-b px-4">
                     <SidebarTrigger className="-ml-2" />
@@ -89,32 +86,8 @@ const Support = () => {
                             answer="Currently, we offer a responsive web application that works well on mobile devices. We are in the process of developing dedicated mobile apps for iOS and Android, which will be released in the near future."
                         />
                     </SupportSection>
-
-                    <SupportSection title="Contact Us">
-                        <form className="space-y-4 px-4">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                                <Input id="name" placeholder="Your Name" />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                                <Input id="email" type="email" placeholder="your.email@example.com" />
-                            </div>
-                            <div>
-                                <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
-                                <Input id="subject" placeholder="Brief description of your issue" />
-                            </div>
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                                <Textarea id="message" placeholder="Please provide details about your issue or question" rows={4} />
-                            </div>
-                            <Button type="submit">Submit</Button>
-                        </form>
-                    </SupportSection>
                 </ScrollArea>
             </div>
-            
-            {/* </SidebarInset> */}
         </SidebarProvider>
     )
 }
