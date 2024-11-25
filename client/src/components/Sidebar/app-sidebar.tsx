@@ -81,7 +81,9 @@ const data = {
             url: "/prediction-techniques",
             icon: ChartNoAxesCombined,
             items: [
-                { title: "LSTM", url: "/lstm" },
+                { title: "ARIMA", url: "/prediction/ARIMA" },
+                { title: "Random Forest", url: "/prediction/randomforest" },
+                { title: "LSTM", url: "/prediction/lstm" },
             ],
         },
         {

@@ -8,11 +8,13 @@ import Home from "./pages/Home"
 import PrivacyPolicy from "./pages/Privacypolicy";
 import Lstm from "./pages/Lstm";
 import Support from "./pages/support";
-import Learning from "./components/Learning/Learning";
+import Learning from "./pages/Learning";
 import Watchlist from "./pages/Watchlist";
 import Profile from "./pages/Profile";
 import Feedback from "./pages/Feedback";
 import Prediction from "./pages/Prediction";
+import ARIMA from "./pages/ARIMA";
+import RandomForest from "./pages/RandomForest";
 
 const App = () => {
   return (
@@ -24,7 +26,9 @@ const App = () => {
         <Route path="/signin" element={<Signin/>} /> 
         <Route path="/home" element={<Home />} />
         <Route path="/prediction-techniques" element={<Prediction />} />
-        <Route path="/lstm" element={<Lstm />} /> 
+        <Route path="/prediction/lstm" element={<Lstm />} /> 
+        <Route path="/prediction/ARIMA" element={<ARIMA />} /> 
+        <Route path="/prediction/randomforest" element={<RandomForest />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
         <Route path="/learning" element={<Learning />} />
         <Route path="/support" element={<Support />} />

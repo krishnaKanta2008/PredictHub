@@ -62,20 +62,20 @@ const Icons = {
 
 const DATA = {
     navbar: [
-        { href: "#", icon: HomeIcon, label: "Home" },
-        { href: "#", icon: LibraryBig, label: "Learning" },
+        { href: "/", icon: HomeIcon, label: "Home" },
+        { href: "/learning", icon: LibraryBig, label: "Learning" },
     ],
     contact: {
         social: {
             GitHub: {
                 name: "GitHub",
-                url: "#",
+                url: "https://github.com/krishnaKanta2008/PredictHub",
                 icon: Icons.github,
             },
 
             email: {
                 name: "Send Email",
-                url: "#",
+                url: "mailto:kb0397206@gmail.com",
                 icon: Icons.email,
             },
         },

@@ -34,6 +34,19 @@ export function Features() {
             }
         </div>
     );
+
+    const LearningImage = () => (
+        <div className="flex flex-1 rounded-xl overflow-hidden">
+            {
+                currentTheme === "dark" ? (
+                    <img src="https://i.ibb.co/nfmfqkR/Screenshot-2024-11-25-130529.png" alt="learning_dark" className="object-cover w-full h-full" />
+                ) : (
+                    <img src="https://i.ibb.co/qmYG0F1/Screenshot-2024-11-25-130841.png" alt="learning_light" className="object-cover w-full h-full" />
+                )
+            }
+        </div>
+    );
+
     const Skeleton = () => (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
     );
@@ -52,7 +65,7 @@ export function Features() {
         {
             title: "Learning material and FAQ",
             description: "Read and learn about stock market.",
-            header: <Skeleton />,
+            header: <LearningImage />,
             className: "md:col-span-1",
             icon: <IconBooks className="h-4 w-4 text-neutral-500" />,
         },
