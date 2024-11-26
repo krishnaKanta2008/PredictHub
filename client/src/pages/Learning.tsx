@@ -3,6 +3,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import StockMarketLearning from "@/components/Learning/LearningComponent";
+import ChatWidget from "@/components/Chatbot/Chatbot";
 
 const Watchlist = () => {
     return (
@@ -19,6 +20,7 @@ const Watchlist = () => {
                     <StockMarketLearning />
                 </div>
             </SidebarInset>
+            <ChatWidget />
         </SidebarProvider>
     )
 }

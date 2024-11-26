@@ -28,7 +28,7 @@ const Hero = () => {
                       >
                           Get started
                       </Button>
-                      <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+                      <a href="/learning" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
                           Learn more <span aria-hidden="true">→</span>
                       </a>
                   </div>

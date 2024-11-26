@@ -79,7 +79,7 @@ const StockWidgetCard = ({ ticker, username, onRemove }: StockWidgetCardProps) =
         <button
           onClick={handleRemoveClick}
           aria-label={`Remove ${ticker} from watchlist`}
-          className="absolute top-1 right-7 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 z-10"
+          className="absolute top-1 right-7 bg-muted text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-900 z-10"
         >
           <CircleMinus />
         </button>

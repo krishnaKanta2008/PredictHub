@@ -47,9 +47,21 @@ export function Features() {
         </div>
     );
 
-    const Skeleton = () => (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
+    const ChatbotImage = () => (
+        <div className="flex flex-1 rounded-xl overflow-hidden">
+            {
+                currentTheme === "dark" ? (
+                    <img src="https://i.ibb.co/6HwMnJt/Screenshot-2024-11-26-133655.png" alt="chatbot_dark" className="object-cover w-full h-full" />
+                ) : (
+                        <img src="https://i.ibb.co/GCM1MF2/Screenshot-2024-11-26-133732.png" alt="chatbot_light" className="object-cover w-full h-full" />
+                )
+            }
+        </div>
     );
+
+    // const Skeleton = () => (
+    //     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
+    // );
 
 
 
@@ -73,7 +85,7 @@ export function Features() {
             title: "ChatBot trained on stock market data",
             description:
                 "Chat with our chatbot to get the latest updates on stock market.",
-            header: <Skeleton />,
+            header: <ChatbotImage />,
             className: "md:col-span-1",
             icon: <IconMessageChatbotFilled className="h-4 w-4 text-neutral-500" />,
         },
