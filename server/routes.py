@@ -4,11 +4,12 @@ from utils.Stock.stock import fetch_stock_data
 from utils.User.profile import get_user_profile, get_profile_details, update_profile
 from utils.Watchlist.watchlist import add_to_watchlist ,remove_from_watchlist, get_watchlist
 from utils.Contact.contact import save_contact_message
-import numpy as np
+from utils.Chat.chat import chat_model
 
 auth_routes = Blueprint('auth', __name__)
 stock_routes = Blueprint('stock', __name__)
 contact_routes = Blueprint('contact', __name__)
+chat_routes = Blueprint('chat', __name__)
 
 @auth_routes.route('/signup', methods=['POST'])
 def signup():
@@ -49,3 +50,7 @@ def get_user_watchlist(username):
 @contact_routes.route('/contact', methods=['POST'])
 def contact():
     return save_contact_message()
+
+@chat_routes.route('/chat', methods=['POST'])
+def chat_generativeai_model():
+    return chat_model()

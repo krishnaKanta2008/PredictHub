@@ -7,8 +7,6 @@ import { useEffect, useRef } from 'react';
 // import TopStocks from "./TopStocks";
 import Marquee from "@/components/ui/marquee";
 
-// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
-
 interface StockData {
     name: string;
     symbol: string;

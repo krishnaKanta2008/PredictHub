@@ -6,3 +6,4 @@ gunicorn
 requests
 yfinance
 cloudinary
+google-generativeai
