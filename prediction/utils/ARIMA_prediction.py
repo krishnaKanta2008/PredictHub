@@ -3,7 +3,7 @@ import joblib
 import yfinance as yf
 import pandas as pd
 
-model_file = './prediction/ARIMA/trained_model.pkl'
+model_file = './Saved_Models/arima_model.pkl'
 
 try:
     arima_model = joblib.load(model_file)

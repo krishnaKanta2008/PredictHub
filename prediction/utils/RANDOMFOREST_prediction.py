@@ -4,7 +4,7 @@ import yfinance as yf
 import pandas as pd
 
 # Load the trained Random Forest model
-model_file = './prediction/RANDOM FOREST/randomforest.pkl'
+model_file = './Saved_Models/randomforest_model.pkl'
 try:
     rf_model = joblib.load(model_file)
 except FileNotFoundError:
