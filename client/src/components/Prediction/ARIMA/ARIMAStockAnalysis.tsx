@@ -9,7 +9,7 @@ export default function ARIMAStockAnalysis() {
             <h2 className="text-2xl font-bold mb-4">Stock Analysis Workflow</h2>
             <CodeFileDisplay
                 filename="arima"
-                file="https://drive.google.com/file/d/1Pi7ACHurArb5V_LIBpJGjC6-OFcbZP5p/view?usp=drive_link"
+                file="https://drive.google.com/file/d/11ypIaRhTYX7uXDjLyuAMk1djX2Pz6Z6n/view?usp=sharing"
             />
             <p className="text-sm mt-5">A comprehensive guide to analyzing stock data using ARIMA model</p>
             <Accordion type="single" collapsible className="w-full">

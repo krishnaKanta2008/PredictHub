@@ -6,8 +6,8 @@ gunicorn
 requests
 yfinance
 plotly
-tensorflow
-keras
 numpy
 scikit-learn
 pandas
+statsmodels
+pmdarima
