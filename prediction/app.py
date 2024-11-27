@@ -27,7 +27,7 @@ def home():
 def randomforest(ticker):
     return predict_stock_price_randomforest(ticker)
 
-@app.route('/arima/<ticker>', mathods=["GET"])
+@app.route('/arima/<ticker>', methods=["GET"])
 def arima(ticker):
     return predict_stock_price_arima(ticker)
 

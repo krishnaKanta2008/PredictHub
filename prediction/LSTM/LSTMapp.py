@@ -59,7 +59,7 @@ def LSTM(df):
 
     x_train, y_train = np.array(x_train), np.array(y_train)
 
-    model = load_model('./LSTM-DL-MODEL/stock_price_prediction_model.h5')
+    model = load_model('stock_price_prediction_model.h5')
 
     past_100_days = data_training.tail(100)
     final_df = pd.concat([past_100_days, data_testing], ignore_index=True)
