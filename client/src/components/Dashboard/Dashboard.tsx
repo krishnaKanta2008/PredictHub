@@ -7,15 +7,6 @@ import { StockInfo } from "./StockInfo";
 import Marquee from "@/components/ui/marquee";
 import StockChart from "./StockChart";
 
-interface StockData {
-    name: string;
-    symbol: string;
-    stock_exchange: {
-        acronym: string;
-        country: string;
-    };
-}
-
 interface PageProps {
     data: StockData | null;
     loading: boolean;

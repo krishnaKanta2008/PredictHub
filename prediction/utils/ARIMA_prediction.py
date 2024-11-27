@@ -3,7 +3,12 @@ import joblib
 import yfinance as yf
 import pandas as pd
 
-model_file = './Saved_Models/arima_model.pkl'
+import os
+
+current_directory = os.getcwd()
+print(f"Current working directory: {current_directory}")
+
+model_file = './utils/Saved_Models/arima_model.pkl'
 
 try:
     arima_model = joblib.load(model_file)
