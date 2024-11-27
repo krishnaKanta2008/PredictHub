@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-# from utils.LSTM_prediction import predict_stock_price_lstm
 from utils.RANDOMFOREST_prediction import predict_stock_price_randomforest
 from utils.ARIMA_prediction import predict_stock_price_arima
 import gunicorn
@@ -18,10 +17,6 @@ CORS(app, supports_credentials=True, resources={
 @app.route('/')
 def home():
     return "Welcome to Predictions!"
-
-# @app.route('/lstm/<ticker>', methods=['GET'])
-# def lstm(ticker):
-#     return predict_stock_price_lstm(ticker)
  
 @app.route('/randomforest/<ticker>', methods=['GET'])
 def randomforest(ticker):

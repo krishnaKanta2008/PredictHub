@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 import joblib
 import yfinance as yf
 import pandas as pd
-
 import os
 
 current_directory = os.getcwd()
@@ -19,32 +18,38 @@ except FileNotFoundError:
 # Function to fetch the latest stock price
 def fetch_latest_stock_price(ticker):
     try:
-        stock_data = yf.download(ticker, period="2d", interval="1d")  # Fetch last 2 days of data
+        stock_data = yf.download(ticker, period="1d", interval="1d")  # Fetch last 1 day of data
+        if stock_data.empty:
+            print(f"No data found for ticker: {ticker}")
+            return None
         return stock_data['Close'].iloc[-1]
     except Exception as e:
         print(f"Error fetching stock price: {e}")
         return None
-    
+
+# Function to predict the next day's price using ARIMA model
 def predict_stock_price_arima(ticker):
-    if arima_model is None:
-        return jsonify({"error": "ARIMA model not loaded. Train and save the model first."}), 500
-
-    # Fetch latest stock price for the given ticker
-    latest_price = fetch_latest_stock_price(ticker)
-    if latest_price is None:
-        return jsonify({"error": f"Could not fetch stock data for ticker '{ticker}'."}), 400
-
-    # Forecast the next day's price
     try:
-        forecast = arima_model.forecast(steps=1)
-        next_day_prediction = forecast[0]
+        if arima_model is None:
+            return jsonify({"error": "ARIMA model not loaded. Make sure the model file exists and is loaded properly."}), 500
+
+        # Fetch historical data for the ticker
+        stock_data = yf.download(ticker, period="1y", interval="1d")  # Fetch last 1 year of data
+        if stock_data.empty:
+            return jsonify({"error": f"No data found for ticker: {ticker}"}), 400
+
+        # Ensure the index is a datetime index
+        stock_data.index = pd.to_datetime(stock_data.index)
+
+        # Prepare the data for prediction
+        latest_price = stock_data['Close'].iloc[-1]
+        prediction = arima_model.get_forecast(steps=1)
+        predicted_price = prediction.predicted_mean.iloc[0]  # Convert to a float
+
         return jsonify({
             "ticker": ticker,
-            "latest_price": latest_price,
-            "predicted_price_next_day": next_day_prediction
+            "latest_price": float(latest_price),  # Ensure native Python float
+            "predicted_price_next_day": float(predicted_price)  # Ensure native Python float
         })
     except Exception as e:
         return jsonify({"error": f"Error during prediction: {str(e)}"}), 500
-
-
-    

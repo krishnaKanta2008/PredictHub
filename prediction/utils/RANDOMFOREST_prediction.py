@@ -1,14 +1,14 @@
-from flask import Flask, jsonify, request
-import joblib
 import yfinance as yf
 import pandas as pd
+import joblib
+import numpy as np
+from flask import jsonify
 
 # Load the trained Random Forest model
 model_file = './utils/Saved_Models/randomforest_model.pkl'
-
 rf_model = joblib.load(model_file)
-    
-# Feature engineering function (same as in training script)
+
+# Feature engineering function
 def prepare_features(data):
     data['Return'] = data['Close'].pct_change()
     data['Volatility'] = data['Close'].rolling(window=5).std()
@@ -17,8 +17,8 @@ def prepare_features(data):
     data = data.dropna()
     return data
 
-# Fetch stock data function
-def get_stock_data(ticker, period='6d', interval='1d'):
+# Fetch stock data
+def get_stock_data(ticker, period='1mo', interval='1d'):
     try:
         data = yf.download(ticker, period=period, interval=interval)
         return data
@@ -26,19 +26,20 @@ def get_stock_data(ticker, period='6d', interval='1d'):
         print(f"Error fetching stock data: {e}")
         return None
 
-# Function to fetch the latest stock price
+# Fetch latest stock price
 def fetch_latest_stock_price(ticker):
     try:
-        stock_data = yf.download(ticker, period="2d", interval="1d")  # Fetch last 2 days of data
+        stock_data = yf.download(ticker, period="1d", interval="1d")
         return stock_data['Close'].iloc[-1]
     except Exception as e:
         print(f"Error fetching stock price: {e}")
         return None
 
+# Predict stock price
 def predict_stock_price_randomforest(ticker):
     if rf_model is None:
         return jsonify({"error": "Random Forest model not loaded. Train and save the model first."}), 500
-    
+
     # Fetch latest stock price for the given ticker
     latest_price = fetch_latest_stock_price(ticker)
 
@@ -59,11 +60,8 @@ def predict_stock_price_randomforest(ticker):
         predicted_price = rf_model.predict(recent_data)
         return jsonify({
             "ticker": ticker,
-            "latest_price": latest_price,
-            "predicted_price_next_day": predicted_price[-1]
+            "latest_price": float(latest_price),  # Convert to native Python type
+            "predicted_price_next_day": float(predicted_price[-1])  # Convert to float
         })
     except Exception as e:
         return jsonify({"error": f"Error during prediction: {str(e)}"}), 500
-
-
-    

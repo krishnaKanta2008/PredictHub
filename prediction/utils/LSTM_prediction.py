@@ -62,7 +62,7 @@
 #     x_train, y_train = np.array(x_train), np.array(y_train)
 
 #     # Load pre-trained model
-#     model = load_model('./LSTM-DL-MODEL/stock_price_prediction_model.h5')
+#     model = load_model('./utils/Saved_Models/LSTM_model.h5')
 
 #     past_100_days = data_training.tail(100)
 #     final_df = pd.concat([past_100_days, data_testing], ignore_index=True)
@@ -88,7 +88,7 @@
 #     predicted_price = y_predicted[-1][0]
 #     return round(predicted_price, 3)
 
-# def predict_stock_price(ticker):
+# def predict_stock_price_lstm(ticker):
 #     # Get stock data and predict stock price
 #     period = '10y'
 #     df = get_data(ticker, period)
