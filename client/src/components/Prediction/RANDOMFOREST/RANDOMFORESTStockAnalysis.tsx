@@ -13,7 +13,7 @@ const RANDOMFORESTStockAnalysis = () => {
       <h2 className="text-2xl font-bold mb-4">Stock Analysis Workflow</h2>
       <CodeFileDisplay
         filename="random-forest"
-        file="https://drive.google.com/file/d/1Pi7ACHurArb5V_LIBpJGjC6-OFcbZP5p/view?usp=drive_link"
+        file="https://colab.research.google.com/drive/1AuIg05YujIl-YrskNKBGQ5B6cb0O61eA?usp=sharing"
       />
       <p className="text-sm mt-5">A comprehensive guide to analyzing stock data using Random Forest model</p>
       <Accordion type="single" collapsible className="w-full">
