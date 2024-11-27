@@ -6,15 +6,15 @@ import { Toaster } from "@/components/ui/sonner"
 import Signin from "./pages/Signin";
 import Home from "./pages/Home"
 import PrivacyPolicy from "./pages/Privacypolicy";
-import Lstm from "./pages/Lstm";
+import { LSTM } from "./pages/Lstm";
 import Support from "./pages/support";
 import Learning from "./pages/Learning";
 import Watchlist from "./pages/Watchlist";
 import Profile from "./pages/Profile";
 import Feedback from "./pages/Feedback";
 import Prediction from "./pages/Prediction";
-import ARIMA from "./pages/ARIMA";
-import RandomForest from "./pages/RandomForest";
+import  { RandomForest } from "./pages/RandomForest";
+import { ARIMA } from "./pages/ARIMA";
 
 const App = () => {
   return (
@@ -26,7 +26,7 @@ const App = () => {
         <Route path="/signin" element={<Signin/>} /> 
         <Route path="/home" element={<Home />} />
         <Route path="/prediction-techniques" element={<Prediction />} />
-        <Route path="/prediction/lstm" element={<Lstm />} /> 
+        <Route path="/prediction/lstm" element={<LSTM />} /> 
         <Route path="/prediction/ARIMA" element={<ARIMA />} /> 
         <Route path="/prediction/randomforest" element={<RandomForest />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 

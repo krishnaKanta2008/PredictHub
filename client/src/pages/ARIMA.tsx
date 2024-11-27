@@ -2,9 +2,9 @@ import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
-import ARIMAPrediction from "@/components/Prediction/ARIMAPrediction";
+import ARIMAPage from "@/components/Prediction/ARIMA/ARIMAPage";
 
-const Watchlist = () => {
+export const ARIMA = () => {
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -16,11 +16,9 @@ const Watchlist = () => {
                     </div>
                 </header>
                 <div className="flex-1 overflow-y-auto p-5 mt-20">
-                    <ARIMAPrediction />
+                    <ARIMAPage />
                 </div>
             </SidebarInset>
         </SidebarProvider>
     )
 }
-
-export default Watchlist

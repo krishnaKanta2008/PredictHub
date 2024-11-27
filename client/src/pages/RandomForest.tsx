@@ -2,9 +2,9 @@ import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
-import RandomForestPrediction from "@/components/Prediction/RandomForestPrediction";
+import RandomForestPage from "@/components/Prediction/RANDOMFOREST/RANDOMFORESTPage";
 
-const Watchlist = () => {
+export const RandomForest = () => {
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -16,11 +16,9 @@ const Watchlist = () => {
                     </div>
                 </header>
                 <div className="flex-1 overflow-y-auto p-5 mt-20">
-                    <RandomForestPrediction />
+                    <RandomForestPage />
                 </div>
             </SidebarInset>
         </SidebarProvider>
     )
 }
-
-export default Watchlist

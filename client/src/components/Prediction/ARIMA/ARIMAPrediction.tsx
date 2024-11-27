@@ -1,3 +1,4 @@
+
 const ARIMAPrediction = () => {
   return (
     <div>ARIMAPrediction</div>
