@@ -5,11 +5,8 @@ import pandas as pd
 
 # Load the trained Random Forest model
 model_file = './utils/Saved_Models/randomforest_model.pkl'
-try:
-    rf_model = joblib.load(model_file)
-except FileNotFoundError:
-    print(f"Model file '{model_file}' not found. Train and save the Random Forest model first.")
-    rf_model = None
+
+rf_model = joblib.load(model_file)
     
 # Feature engineering function (same as in training script)
 def prepare_features(data):
