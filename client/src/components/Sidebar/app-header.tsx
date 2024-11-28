@@ -79,7 +79,7 @@ export default function AppHeader({
     const filteredSuggestions = getFilteredSuggestions();
 
     return (
-        <header className="flex h-16 shrink-0 items-center justify-between border-b px-4 fixed top-0 z-10 bg-opacity-90 backdrop-blur-sm ml-1 w-full">
+        <header className="flex h-16 shrink-0 items-center justify-between border-b px-4 fixed top-0 z-10 bg-opacity-90 backdrop-blur-sm ml-[2px] w-full">
             <div className="flex items-center gap-4">
                 <SidebarTrigger className="" />
                 <Separator orientation="vertical" className="h-6" />
