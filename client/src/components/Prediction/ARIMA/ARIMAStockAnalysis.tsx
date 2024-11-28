@@ -3,24 +3,27 @@ import { Card } from "@/components/ui/card"
 import { CodeFileDisplay } from "@/components/CodeFileDisplay/CodeFileDisplay"
 
 export default function ARIMAStockAnalysis() {
-
     return (
-        <Card className="w-full border-none">
+        <Card className="w-full border-none p-4">
             <h2 className="text-2xl font-bold mb-4">Stock Analysis Workflow</h2>
-            <CodeFileDisplay
-                filename="arima"
-                file="https://colab.research.google.com/drive/14ejZ6VLvxdUIVAonkyetwxXyAIlqsfKa?usp=sharing"
-            />
+            <div className="overflow-x-auto">
+                <CodeFileDisplay
+                    filename="arima"
+                    file="https://colab.research.google.com/drive/14ejZ6VLvxdUIVAonkyetwxXyAIlqsfKa?usp=sharing"
+                />
+            </div>
             <p className="text-sm mt-5">A comprehensive guide to analyzing stock data using ARIMA model</p>
             <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                     <AccordionTrigger>1. Fetch Stock Data</AccordionTrigger>
                     <AccordionContent>
-                        <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md overflow-x-auto">
-                            <code>{`def fetch_stock_data(ticker, start_date, end_date):
+                        <div className="overflow-x-auto">
+                            <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md whitespace-pre-wrap break-words">
+                                <code>{`def fetch_stock_data(ticker, start_date, end_date):
     stock_data = yf.download(ticker, start=start_date, end=end_date)
     return stock_data['Close']`}</code>
-                        </pre>
+                            </pre>
+                        </div>
                         <p className="mt-2"><strong>Purpose:</strong> Downloads historical stock data for a specific ticker using the <code>yfinance</code> library.</p>
                         <p><strong>Inputs:</strong></p>
                         <ul className="list-disc list-inside">
@@ -34,8 +37,9 @@ export default function ARIMAStockAnalysis() {
                 <AccordionItem value="item-2">
                     <AccordionTrigger>2. Plot the Time Series</AccordionTrigger>
                     <AccordionContent>
-                        <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md overflow-x-auto">
-                            <code>{`def plot_time_series(data, title):
+                        <div className="overflow-x-auto">
+                            <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md whitespace-pre-wrap break-words">
+                                <code>{`def plot_time_series(data, title):
     plt.figure(figsize=(10, 6))
     plt.plot(data, label='Stock Prices')
     plt.title(title)
@@ -43,7 +47,8 @@ export default function ARIMAStockAnalysis() {
     plt.ylabel('Price')
     plt.legend()
     plt.show()`}</code>
-                        </pre>
+                            </pre>
+                        </div>
                         <p className="mt-2"><strong>Purpose:</strong> Visualizes the stock price time series to understand trends and patterns.</p>
                         <p><strong>Inputs:</strong></p>
                         <ul className="list-disc list-inside">
@@ -56,11 +61,13 @@ export default function ARIMAStockAnalysis() {
                 <AccordionItem value="item-3">
                     <AccordionTrigger>3. Automatically Determine ARIMA Parameters</AccordionTrigger>
                     <AccordionContent>
-                        <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md overflow-x-auto">
-                            <code>{`def determine_arima_params(data):
+                        <div className="overflow-x-auto">
+                            <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md whitespace-pre-wrap break-words">
+                                <code>{`def determine_arima_params(data):
     model = auto_arima(data, seasonal=False, trace=True, error_action='ignore', suppress_warnings=True)
     return model.order`}</code>
-                        </pre>
+                            </pre>
+                        </div>
                         <p className="mt-2"><strong>Purpose:</strong> Uses <code>pmdarima</code>'s <code>auto_arima</code> function to find optimal ARIMA parameters (<code>p</code>, <code>d</code>, <code>q</code>) based on the input data.</p>
                         <ul className="list-disc list-inside">
                             <li><code>p</code>: Number of lag observations in the model (AR terms).</li>
@@ -74,12 +81,14 @@ export default function ARIMAStockAnalysis() {
                 <AccordionItem value="item-4">
                     <AccordionTrigger>4. Fit ARIMA Model</AccordionTrigger>
                     <AccordionContent>
-                        <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md overflow-x-auto">
-                            <code>{`def fit_arima_model(data, order):
+                        <div className="overflow-x-auto">
+                            <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md whitespace-pre-wrap break-words">
+                                <code>{`def fit_arima_model(data, order):
     model = ARIMA(data, order=order)
     fitted_model = model.fit()
     return fitted_model`}</code>
-                        </pre>
+                            </pre>
+                        </div>
                         <p className="mt-2"><strong>Purpose:</strong> Fits an ARIMA model with the determined <code>(p, d, q)</code> values.</p>
                         <p><strong>Inputs:</strong></p>
                         <ul className="list-disc list-inside">
@@ -93,11 +102,13 @@ export default function ARIMAStockAnalysis() {
                 <AccordionItem value="item-5">
                     <AccordionTrigger>5. Forecast Future Prices</AccordionTrigger>
                     <AccordionContent>
-                        <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md overflow-x-auto">
-                            <code>{`def forecast_prices(model, steps):
+                        <div className="overflow-x-auto">
+                            <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md whitespace-pre-wrap break-words">
+                                <code>{`def forecast_prices(model, steps):
     forecast = model.forecast(steps=steps)
     return forecast`}</code>
-                        </pre>
+                            </pre>
+                        </div>
                         <p className="mt-2"><strong>Purpose:</strong> Generates predictions for the next <code>steps</code> periods using the fitted ARIMA model.</p>
                         <p><strong>Inputs:</strong></p>
                         <ul className="list-disc list-inside">
@@ -111,13 +122,15 @@ export default function ARIMAStockAnalysis() {
                 <AccordionItem value="item-6">
                     <AccordionTrigger>6. Evaluate the Forecast</AccordionTrigger>
                     <AccordionContent>
-                        <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md overflow-x-auto">
-                            <code>{`def evaluate_forecast(actual, predicted):
+                        <div className="overflow-x-auto">
+                            <pre className="p-4 bg-gray-100 dark:bg-zinc-900 rounded-md whitespace-pre-wrap break-words">
+                                <code>{`def evaluate_forecast(actual, predicted):
     mae = mean_absolute_error(actual, predicted)
     rmse = np.sqrt(mean_squared_error(actual, predicted))
     mape = np.mean(np.abs((actual - predicted) / actual)) * 100
     return {"MAE": mae, "RMSE": rmse, "MAPE": mape}`}</code>
-                        </pre>
+                            </pre>
+                        </div>
                         <p className="mt-2"><strong>Purpose:</strong> Evaluates the model's forecast performance using error metrics:</p>
                         <ul className="list-disc list-inside">
                             <li><strong>MAE:</strong> Average magnitude of errors.</li>

@@ -105,4 +105,16 @@ class Contact:
         result = db.contacts.insert_one(contact_data)
         contact_data["_id"] = str(result.inserted_id)
         return contact_data
+    
+class Feedback:
+    @staticmethod
+    def save_feedback(data):
+        contact_data = {
+            "username": data['username'],
+            "rating": data['rating'],
+            "message": data['message']
+        }
+        result = db.contacts.insert_one(contact_data)
+        contact_data["_id"] = str(result.inserted_id)
+        return contact_data
 

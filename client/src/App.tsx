@@ -15,6 +15,7 @@ import Feedback from "./pages/Feedback";
 import Prediction from "./pages/Prediction";
 import  { RandomForest } from "./pages/RandomForest";
 import { ARIMA } from "./pages/ARIMA";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   return (
@@ -34,7 +35,7 @@ const App = () => {
         <Route path="/support" element={<Support />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/watchlist/:username" element={<Watchlist />} />
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
       <Toaster />
     </ThemeProvider>

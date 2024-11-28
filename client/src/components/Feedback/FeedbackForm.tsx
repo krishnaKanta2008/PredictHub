@@ -1,29 +1,53 @@
-"use client"
-
 import * as React from "react"
-import { Star } from 'lucide-react'
+import { Star } from "lucide-react"
 import { cn } from "@/lib/utils"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
+import { toast } from "sonner"
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 
 export function FeedbackForm() {
     const [rating, setRating] = React.useState<number>(0)
     const [hoveredRating, setHoveredRating] = React.useState<number>(0)
     const [message, setMessage] = React.useState("")
+    const [loading, setLoading] = React.useState(false) // Loading state
+    const username = localStorage.getItem("predicthub_username") || "Anonymous"
 
-    // const handleSubmit = (e: React.FormEvent) => {
-    //     e.preventDefault()
-    //     const onSubmit = (rating: number, message: string) => {
-    //         console.log("Rating:", rating, "Message:", message)
-    //     }
-    //     onSubmit(rating, message)
-    // }
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault()
+        setLoading(true) // Start loading
+        try {
+            const response = await fetch(`${backendUrl}/feedback`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username,
+                    rating: rating.toString(),
+                    message,
+                }),
+            })
+            const data = await response.json()
+            if (data.success) {
+                toast.success("Feedback message sent successfully")
+                setRating(0) // Clear rating
+                setMessage("") // Clear message
+            } else {
+                toast.error("Failed to save feedback message")
+            }
+        } catch (error) {
+            toast.error("An error occurred while sending feedback: " + error)
+        } finally {
+            setLoading(false) // Stop loading
+        }
+    }
 
     return (
         <Card className="w-full max-w-md border-none">
-            <form >
+            <form onSubmit={handleSubmit}>
                 <CardHeader>
                     <h2 className="text-center text-xl font-semibold">
                         Your opinion matters to us!
@@ -57,22 +81,20 @@ export function FeedbackForm() {
                             ))}
                         </div>
                     </div>
-                    <div className="w-full space-y-2">
-                        <Textarea
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            placeholder="Leave a message, if you want"
-                            className="min-h-[100px] resize-none"
-                        />
-                    </div>
+                    <Textarea
+                        placeholder="Leave a message..."
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        className="w-full"
+                        disabled={loading} // Disable textarea while loading
+                    />
                 </CardContent>
-                <CardFooter className="flex flex-col space-y-4">
-                    <Button type="submit" className="w-full" disabled={rating === 0}>
-                        Rate now
+                <CardFooter className="flex justify-center">
+                    <Button type="submit" disabled={loading}>
+                        {loading ? "Submitting..." : "Submit"}
                     </Button>
                 </CardFooter>
             </form>
         </Card>
     )
 }
-

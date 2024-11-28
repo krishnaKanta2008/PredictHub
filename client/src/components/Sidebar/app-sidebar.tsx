@@ -80,9 +80,9 @@ const data = {
             url: "/prediction-techniques",
             icon: ChartNoAxesCombined,
             items: [
-                { title: "ARIMA", url: "/prediction/ARIMA" },
-                { title: "Random Forest", url: "/prediction/randomforest" },
                 { title: "LSTM", url: "/prediction/lstm" },
+                { title: "Random Forest", url: "/prediction/randomforest" },
+                { title: "ARIMA", url: "/prediction/ARIMA" },
             ],
         },
         {
@@ -284,7 +284,7 @@ export function AppSidebar() {
                         <SidebarMenu>
                             {data.navSecondary.map((item) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild size="sm">
+                                    <SidebarMenuButton asChild size="sm" tooltip={item.title}>
                                         <a href={item.url}>
                                             <item.icon />
                                             <span>{item.title}</span>
@@ -295,7 +295,7 @@ export function AppSidebar() {
                             <AlertDialog>
                                 <AlertDialogTrigger>
                                     <SidebarMenuItem>
-                                        <SidebarMenuButton asChild size="sm">
+                                        <SidebarMenuButton asChild size="sm" tooltip='Feedback'>
                                             <a>
                                                 <Send />
                                                 <span>Feedback</span>
@@ -315,7 +315,7 @@ export function AppSidebar() {
                             <AlertDialog>
                                 <AlertDialogTrigger>
                                     <SidebarMenuItem>
-                                        <SidebarMenuButton asChild size="sm">
+                                        <SidebarMenuButton asChild size="sm" tooltip='contact'>
                                             <a>
                                                 <UserPen />
                                                 <span>Contact</span>

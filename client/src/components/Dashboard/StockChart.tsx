@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { toPng } from 'html-to-image';
-import { ImageDown } from 'lucide-react';
+// import { toPng } from 'html-to-image';
+// import { ImageDown } from 'lucide-react';
 import {
     Tooltip,
     TooltipContent,
@@ -16,23 +16,23 @@ const StockChart = ({ ticker }: PageProps) => {
     const container = useRef<HTMLDivElement | null>(null);
     const webAppTheme = localStorage.getItem('vite-ui-theme');
 
-    const handleDownloadClick = async () => {
-        if (!container.current) {
-            alert('Chart not loaded. Please try again later.');
-            return;
-        }
+    // const handleDownloadClick = async () => {
+    //     if (!container.current) {
+    //         alert('Chart not loaded. Please try again later.');
+    //         return;
+    //     }
 
-        try {
-            const dataUrl = await toPng(container.current, { cacheBust: true });
-            const link = document.createElement('a');
-            link.download = `${ticker || 'chart'}.png`;
-            link.href = dataUrl;
-            link.click();
-        } catch (error) {
-            console.error('Failed to download chart:', error);
-            alert('Unable to download chart. Cross-origin content blocking might be the issue.');
-        }
-    };
+    //     try {
+    //         const dataUrl = await toPng(container.current, { cacheBust: true });
+    //         const link = document.createElement('a');
+    //         link.download = `${ticker || 'chart'}.png`;
+    //         link.href = dataUrl;
+    //         link.click();
+    //     } catch (error) {
+    //         console.error('Failed to download chart:', error);
+    //         alert('Unable to download chart. Cross-origin content blocking might be the issue.');
+    //     }
+    // };
 
     useEffect(() => {
         if (!container.current) return;
@@ -75,15 +75,13 @@ const StockChart = ({ ticker }: PageProps) => {
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <button
-                            onClick={handleDownloadClick}
-                            aria-label={`Download ${ticker} chart as PNG`}
                             className="absolute bottom-[40px] left-[11px] bg-muted text-white rounded-full w-12 h-12 flex items-center justify-center z-20"
                         >
-                            <ImageDown />
+                            📈
                         </button>
                     </TooltipTrigger>
                     <TooltipContent>
-                        <p>save as png</p>
+                        <p>predicthub Chart</p>
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>

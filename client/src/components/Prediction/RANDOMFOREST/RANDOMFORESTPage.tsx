@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import RANDOMFORESTStockAnalysis from "./RANDOMFORESTStockAnalysis"
 import { LineChart, TrendingUp, FileText } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import {
     Table,
     TableBody,
@@ -90,10 +90,11 @@ const RANDOMFORESTPage = ({ data, loading, ticker }: PageProps) => {
                                     Report
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent >
+                            <CardContent>
                                 <div className="bg-muted rounded-lg flex items-center justify-center text-muted-foreground">
                                     <div className="w-full space-y-4 md:space-y-6 md:p-4">
-                                        <ScrollArea className="h-[200px] md:h-[250px] rounded-md border p-2 md:p-4">
+                                        <ScrollArea className="h-[300px] md:h-[350px] rounded-md border p-2 md:p-4">
+                                            <ScrollArea className="w-[280px] md:w-full">
                                             <Card>
                                                 <CardHeader>
                                                     <CardTitle className="text-sm md:text-base">General Metrics</CardTitle>
@@ -118,57 +119,62 @@ const RANDOMFORESTPage = ({ data, loading, ticker }: PageProps) => {
                                                 <CardHeader>
                                                     <CardTitle className="text-sm md:text-base">Classification Report</CardTitle>
                                                 </CardHeader>
-                                                <CardContent className="overflow-x-auto">
-                                                    <div className="inline-block min-w-full align-middle">
-                                                        <Table className="min-w-full">
-                                                            <TableHeader>
-                                                                <TableRow>
-                                                                    <TableHead className="w-[80px] md:w-[100px] text-xs md:text-sm">Class</TableHead>
-                                                                    <TableHead className="text-xs md:text-sm">Precision</TableHead>
-                                                                    <TableHead className="text-xs md:text-sm">Recall</TableHead>
-                                                                    <TableHead className="text-xs md:text-sm">F1-score</TableHead>
-                                                                    <TableHead className="text-xs md:text-sm">Support</TableHead>
-                                                                </TableRow>
-                                                            </TableHeader>
-                                                            <TableBody>
-                                                                <TableRow>
-                                                                    <TableCell className="font-medium text-xs md:text-sm">0</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.59</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.45</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.51</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">105</TableCell>
-                                                                </TableRow>
-                                                                <TableRow>
-                                                                    <TableCell className="font-medium text-xs md:text-sm">1</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.50</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.64</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.56</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">91</TableCell>
-                                                                </TableRow>
-                                                                <TableRow>
-                                                                    <TableCell className="font-medium text-xs md:text-sm">Accuracy</TableCell>
-                                                                    <TableCell colSpan={3} className="text-xs md:text-sm">0.54</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">196</TableCell>
-                                                                </TableRow>
-                                                                <TableRow>
-                                                                    <TableCell className="font-medium text-xs md:text-sm">Macro avg</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.54</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.54</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.53</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">196</TableCell>
-                                                                </TableRow>
-                                                                <TableRow>
-                                                                    <TableCell className="font-medium text-xs md:text-sm">Weighted avg</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.55</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.54</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">0.53</TableCell>
-                                                                    <TableCell className="text-xs md:text-sm">196</TableCell>
-                                                                </TableRow>
-                                                            </TableBody>
-                                                        </Table>
-                                                    </div>
+                                                <CardContent>
+                                                    
+                                                        <div className="min-w-[500px]">
+                                                            <Table>
+                                                                <TableHeader>
+                                                                    <TableRow>
+                                                                        <TableHead className="w-[80px] md:w-[100px] text-xs md:text-sm">Class</TableHead>
+                                                                        <TableHead className="text-xs md:text-sm">Precision</TableHead>
+                                                                        <TableHead className="text-xs md:text-sm">Recall</TableHead>
+                                                                        <TableHead className="text-xs md:text-sm">F1-score</TableHead>
+                                                                        <TableHead className="text-xs md:text-sm">Support</TableHead>
+                                                                    </TableRow>
+                                                                </TableHeader>
+                                                                <TableBody>
+                                                                    <TableRow>
+                                                                        <TableCell className="font-medium text-xs md:text-sm">0</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.59</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.45</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.51</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">105</TableCell>
+                                                                    </TableRow>
+                                                                    <TableRow>
+                                                                        <TableCell className="font-medium text-xs md:text-sm">1</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.50</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.64</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.56</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">91</TableCell>
+                                                                    </TableRow>
+                                                                    <TableRow>
+                                                                        <TableCell className="font-medium text-xs md:text-sm">Accuracy</TableCell>
+                                                                        <TableCell colSpan={3} className="text-xs md:text-sm">0.54</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">196</TableCell>
+                                                                    </TableRow>
+                                                                    <TableRow>
+                                                                        <TableCell className="font-medium text-xs md:text-sm">Macro avg</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.54</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.54</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.53</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">196</TableCell>
+                                                                    </TableRow>
+                                                                    <TableRow>
+                                                                        <TableCell className="font-medium text-xs md:text-sm">Weighted avg</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.55</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.54</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">0.53</TableCell>
+                                                                        <TableCell className="text-xs md:text-sm">196</TableCell>
+                                                                    </TableRow>
+                                                                </TableBody>
+                                                            </Table>
+                                                        </div>
+                                                       
+                                                   
                                                 </CardContent>
                                             </Card>
+                                            <ScrollBar orientation="horizontal" />
+                                        </ScrollArea>
                                         </ScrollArea>
                                     </div>
                                 </div>
