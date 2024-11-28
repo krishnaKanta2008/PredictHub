@@ -1,40 +1,52 @@
 # 📈 PredictHub
 
-PredictHub is a sophisticated stock price prediction platform that combines machine learning with real-time market data analysis. The application leverages LSTM (Long Short-Term Memory) neural networks to forecast stock prices based on historical data. 🤖
+PredictHub is a sophisticated stock price prediction and analyzing platform that combines machine learning with real-time market data analysis for naive users to start their trade journey. The application leverages LSTM (Long Short-Term Memory) neural networks to forecast stock prices based on historical data and personalized dashboard with traking favourite stocks features. 
 
 ### ✨ Key Features
 
-- 🔮 **Stock Price Predictions**: Utilizes deep learning LSTM models to generate price forecasts
-- 📊 **Real-Time Market Data**: Integrates with Yahoo Finance API to fetch current stock information
-- 📈 **Interactive Charts**: Visualizes stock data through interactive candlestick charts
-- 🔐 **User Authentication**: Secure login system with GitHub OAuth integration
-- 📱 **Responsive Design**: Modern UI built with React and Tailwind CSS
+- [x] Authentication System
+- [x] Realtime Stock ticker tape
+- [x] Personalized Dashboard
+- [x] Search any ticker with suggestions
+- [x] Shows open, closed, high prices of searched ticker
+- [x] Shows searched Company's Details 
+- [x] Adding/Removing ticker functionality into Watchlist
+- [x] Preprompted chatbot for Stock Market
+- [x] Candle Stick Chart for searched ticker 
+- [x] Description about Stock Prediction Methods
+- [x] 3 Stock Prediction DL/ML Models for next day price prediction
+    - [x] LSTM (Long Short Term Memory)
+    - [x] Random Forest
+    - [x] ARIMA
+- [x] Learning Section for naive users
+- [x] Sharable and personalized Profile page
+- [x] Support page for resolving user query
+- [x] Contact and Feedback form connceted to the mongoDB
+- [x] Supports Dark Mode 
 
 ### 🛠️ Tech Stack
 
 **Frontend:**
-- ⚛️ React.js with TypeScript
-- 🎨 Tailwind CSS for styling
-- 🎯 Shadcn UI components
-- 📊 Chart.js for data visualization
+- React.js with TypeScript
+- Tailwind CSS for styling
+- Shadcn UI components
 
 **Backend:**
-- 🐍 Flask Python server
-- 🗄️ MongoDB database
-- 🧠 LSTM neural networks for predictions
-- 📡 Yahoo Finance API integration
+- Flask Python server
+
+**Database**
+- MongoDB 
+
+**API**
+- yfinance
+- Gemini
+
 
 ### 🏗️ Architecture
 
-The application follows a client-server architecture:
-- 🖥️ Frontend makes API calls to fetch predictions and stock data
-- ⚙️ Backend processes requests, runs ML models, and manages authentication
-- ⚡ Real-time data is fetched from Yahoo Finance
-- 🤖 Predictions are generated using pre-trained LSTM models
 
 
-
-## Installation Guide
+### Installation Guide
 
 ### Server
 
@@ -59,16 +71,14 @@ The application follows a client-server architecture:
     ```sh
     pip install -r requirements.txt
     ```
-5. Ensure you have MongoDB running and set the `MONGODB_URL` and to use GithubOAuth you need Github_ClientId and Github_ClientSecret from the Github account in your `.env` file:
+5. Ensure you have MongoDB running and set the `MONGODB_URL` in your `.env` file:
     ```env
     MONGODB_URI=YOUR_MONGODB_URI
-    GITHUB_CLIENT_ID=YOUR_GITHUB_CLIENT_ID
-    GITHUB_CLIENT_SECRET=YOUR_GITHUB_CLIENT_SECRET
     ```
-Follow this documentation to get the Github_ClientId and Github_ClientSecret: [Github OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+
 6. Start the server:
     ```sh
-    flask run
+    flask run or python app.py
     ```
 
 ### Client
@@ -85,31 +95,6 @@ Follow this documentation to get the Github_ClientId and Github_ClientSecret: [G
     ```sh
     npm run dev
     ```
+### WebApp Images
 
-## Project Structure
-
-```
-predicthub/
-├── client/                 
-│   ├── public/            
-│   ├── src/               
-│   │   ├── components/    
-│   │   ├── pages/        
-│   │   ├── styles/       
-│   │   └── utils/        
-│   ├── package.json
-│   └── vite.config.ts
-│
-├── server/ 
-|   ├── venv/              
-│   ├── api/              
-│   ├── models/           
-│   ├── services/         
-│   ├── utils/            
-│   ├── requirements.txt
-│   └── app.py           
-│
-├── LICENSE
-└── README.md
-```
 
