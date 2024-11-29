@@ -46,6 +46,8 @@ PredictHub is a sophisticated stock price prediction and analyzing platform that
 
 ![Untitled-2024-11-28-2216](https://github.com/user-attachments/assets/3fa6ac3e-55dd-46ce-a999-8c2ea2edd349)
 
+---
+
 ### Installation Guide
 
 ### Server
@@ -95,6 +97,9 @@ PredictHub is a sophisticated stock price prediction and analyzing platform that
     ```sh
     npm run dev
     ```
+
+---
+
 ### WebApp Images
 
 ![image](https://github.com/user-attachments/assets/f6f2ce2c-9104-42ab-ac71-ab82e29842b0)
