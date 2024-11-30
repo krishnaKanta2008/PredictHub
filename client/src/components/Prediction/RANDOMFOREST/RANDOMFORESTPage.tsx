@@ -37,7 +37,7 @@ interface StockData {
     };
 }
 
-const BackendPredictionURL = import.meta.env.VITE_PREDICTION_URL || "http://localhost:5000";
+const BackendPredictionURL = import.meta.env.VITE_ML_PREDICTION_URL || "http://localhost:5001";
 
 const RANDOMFORESTPage = ({ data, loading, ticker }: PageProps) => {
     const [stockData, setStockData] = useState<ResponseData | null>(null);
@@ -56,7 +56,7 @@ const RANDOMFORESTPage = ({ data, loading, ticker }: PageProps) => {
                     <CardHeader>
                         <CardTitle className="text-xl md:text-2xl font-bold flex items-center gap-2">
                             <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />
-                            Stock Prediction using ARIMA
+                            Stock Prediction using Random Forest
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="grid md:grid-cols-2 gap-4 md:gap-6 p-4 w-full">

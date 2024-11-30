@@ -2,7 +2,7 @@ import Dashboard from "@/components/Dashboard/Dashboard";
 import AppHeader from "@/components/Sidebar/app-header";
 import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { fetchStockData } from "@/app/actions";
+import { fetchStockData } from "@/lib/actions";
 import { useCallback, useState, useEffect } from "react";
 import ChatWidget from "@/components/Chatbot/Chatbot";
 

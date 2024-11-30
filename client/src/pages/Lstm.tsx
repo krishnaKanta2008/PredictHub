@@ -4,7 +4,7 @@ import { SidebarInset } from "@/components/ui/sidebar";
 import LSTMPage from "@/components/Prediction/LSTM/LSTMPage";
 import AppHeader from "@/components/Sidebar/app-header";
 import { useCallback, useState, useEffect } from "react";
-import { fetchStockData } from "@/app/actions";
+import { fetchStockData } from "@/lib/actions";
 
 export const LSTM = () => {
   const [ticker, setTicker] = useState("GOOGL");

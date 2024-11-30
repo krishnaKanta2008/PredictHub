@@ -6,6 +6,5 @@ requests
 scikit-learn
 keras
 yfinance
-plotly
 matplotlib
-tensorflow
+tensorflow==2.12.0

@@ -2,8 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_BACKEND_URL: string;
-  readonly VITE_PREDICTION_URL: string;
-  readonly VITE_PREDICTION_LSTM_URL: string;
+  readonly VITE_ML_PREDICTION_URL: string;
+  readonly VITE_DL_PREDICTION_URL: string;
 }
 
 interface ImportMeta {

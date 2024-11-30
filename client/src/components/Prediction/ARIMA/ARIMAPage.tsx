@@ -29,7 +29,7 @@ interface StockData {
     };
 }
 
-const BackendPredictionURL = import.meta.env.VITE_PREDICTION_URL || "http://localhost:5000";
+const BackendPredictionURL = import.meta.env.VITE_ML_PREDICTION_URL || "http://localhost:5001";
 
 const ARIMAPage = ({ data, loading, ticker }: PageProps) => {
     const [stockData, setStockData] = useState<ResponseData | null>(null);

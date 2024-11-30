@@ -51,53 +51,11 @@ PredictHub is a sophisticated stock price prediction and analyzing platform that
 
 ### Installation Guide
 
-### Server
+Explore the [File Structure](FILE_STRUCTURE.md) to get know the codebase and understand the file structure components and [Installation Guide](INSTALLATION.md) to run the project locally on your system.
 
-1. Navigate to the server directory:
-    ```sh
-    cd server
-    ```
-2. Create a virtual environment:
-    ```sh
-    python -m venv venv
-    ```
-3. Activate the virtual environment:
-    - On Windows:
-        ```sh
-        venv\Scripts\activate
-        ```
-    - On macOS/Linux:
-        ```sh
-        source venv/bin/activate
-        ```
-4. Install the required packages:
-    ```sh
-    pip install -r requirements.txt
-    ```
-5. Ensure you have MongoDB running and set the `MONGODB_URL` in your `.env` file:
-    ```env
-    MONGODB_URI=YOUR_MONGODB_URI
-    ```
-
-6. Start the server:
-    ```sh
-    flask run or python app.py
-    ```
-
-### Client
-
-1. Navigate to the client directory:
-    ```sh
-    cd client
-    ```
-2. Install the dependencies:
-    ```sh
-    npm install
-    ```
-3. Start the development server:
-    ```sh
-    npm run dev
-    ```
+Prerequsite
+- python
+- npm
 
 ### WebApp Images
 

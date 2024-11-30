@@ -1,6 +1,6 @@
 import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { fetchStockData } from "@/app/actions";
+import { fetchStockData } from "@/lib/actions";
 import { useCallback, useState, useEffect } from "react";
 import { SidebarInset } from "@/components/ui/sidebar";
 import ARIMAPage from "@/components/Prediction/ARIMA/ARIMAPage";
