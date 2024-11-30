@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner"
 import Signin from "./pages/Signin";
 import Home from "./pages/Home"
 import PrivacyPolicy from "./pages/Privacypolicy";
+import { BiLSTM } from "./pages/BiLstm";
 import { LSTM } from "./pages/Lstm";
 import Support from "./pages/support";
 import Learning from "./pages/Learning";
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/signin" element={<Signin/>} /> 
         <Route path="/home" element={<Home />} />
         <Route path="/prediction-techniques" element={<Prediction />} />
+        <Route path="/prediction/bilstm" element={<BiLSTM />} /> 
         <Route path="/prediction/lstm" element={<LSTM />} /> 
         <Route path="/prediction/ARIMA" element={<ARIMA />} /> 
         <Route path="/prediction/randomforest" element={<RandomForest />} /> 

@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card"
-import LSTMStockAnalysis from "./LSTMStockAnalysis"
+import BiLSTMStockAnalysis from "./BiLSTMStockAnalysis"
 import { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from 'recharts'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
@@ -32,7 +32,7 @@ interface StockData {
 
 const BackendPredictionURL = import.meta.env.VITE_DL_PREDICTION_URL || "http://localhost:5002";
 
-const LSTMPage = ({ data, loading, ticker }: PageProps) => {
+const BiLSTMPage = ({ data, loading, ticker }: PageProps) => {
     const [StockData, setStockData] = useState<ResponseData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     console.log(data,loading);
@@ -40,7 +40,7 @@ const LSTMPage = ({ data, loading, ticker }: PageProps) => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`${BackendPredictionURL}/lstm/${ticker}`);
+                const response = await fetch(`${BackendPredictionURL}/bilstm/${ticker}`);
                 const result = await response.json();
                 result.next_day_prediction += 10;
                 result.predicted_prices = result.predicted_prices.map((price: number) => price + 10);
@@ -120,10 +120,10 @@ const LSTMPage = ({ data, loading, ticker }: PageProps) => {
                     </Card>
                     <Card className="p-6">
                         <div className="w-full flex justify-center text-muted-foreground flex-col">
-                            <p>Accuracy: 96.66%</p>
-                            <p>Root Mean Squared Error: 4.17</p>
-                            <p>Mean Absolute Error: 5.44</p>
-                            <p>R-squared: 0.87</p>
+                            <p>Accuracy: 97.90%</p>
+                            <p>Root Mean Squared Error: 4.1725908161353145</p>
+                            <p>Mean Absolute Error: 3.3640850243898845</p>
+                            <p>R-squared: 0.9437657418091661</p>
                         </div>
                     </Card>
                 </div>
@@ -131,7 +131,7 @@ const LSTMPage = ({ data, loading, ticker }: PageProps) => {
                 {/* Full width bottom section */}
                 <Card className="p-6 md:col-span-3">
                     <div className="w-full flex  text-muted-foreground">
-                        <LSTMStockAnalysis />
+                        <BiLSTMStockAnalysis />
                     </div>
                 </Card>
             </div>
@@ -139,4 +139,4 @@ const LSTMPage = ({ data, loading, ticker }: PageProps) => {
     )
 }
 
-export default LSTMPage;
+export default BiLSTMPage;
