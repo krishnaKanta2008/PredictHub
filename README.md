@@ -49,6 +49,10 @@ PredictHub is a sophisticated stock price prediction and analyzing platform that
 
 ![Untitled-2024-11-28-2216](https://github.com/user-attachments/assets/3fa6ac3e-55dd-46ce-a999-8c2ea2edd349)
 
+### Project Gothrough Video
+
+
+
 ### Installation Guide
 
 Explore the [File Structure](FILE_STRUCTURE.md) to get know the codebase and understand the file structure components and [Installation Guide](INSTALLATION.md) to run the project locally on your system.
