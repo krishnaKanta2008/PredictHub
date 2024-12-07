@@ -56,7 +56,7 @@ const StockChart = ({ ticker }: PageProps) => {
                     <button
                         className="absolute bottom-[40px] left-[11px] bg-muted text-white rounded-full w-12 h-12 flex items-center justify-center z-20"
                     >
-                        <ChartCandlestick />
+                        <ChartCandlestick className='text-black dark:text-white' />
                     </button>
                 </HoverCardTrigger>
                 <HoverCardContent>

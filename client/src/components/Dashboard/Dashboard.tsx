@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { StockMetric } from "@/components/Dashboard/StockMetrics"
 import { Card } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton";
 import StockDetails from "./StockDetails";
 import { StockInfo } from "./StockInfo";
-// import TopStocks from "./TopStocks";
+import TopStocks from "./TopStocks";
 import Marquee from "@/components/ui/marquee";
 import StockChart from "./StockChart";
 
@@ -27,6 +28,11 @@ interface StockData {
 }
 
 export default function Dashboard({ data, loading, ticker }: PageProps) {
+    const webAppTheme = localStorage.getItem('vite-ui-theme');
+    useEffect(() => {
+        <StockChart ticker={ticker} />
+    }, [ticker, webAppTheme]);
+    
     const marqueeItems = [
         "Item 1",
         "Item 2",
@@ -67,7 +73,7 @@ export default function Dashboard({ data, loading, ticker }: PageProps) {
 
     return (
         <div className="w-full p-4 space-y-4 relative">
-            {/* <TopStocks /> */}
+            <TopStocks />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1 flex">
                 <StockInfo ticker={ticker} />
                 <StockMetric
