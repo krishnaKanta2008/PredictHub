@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Eye, EyeOff } from 'lucide-react';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL = process.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function Signin() {
     const [formData, setFormData] = useState({ username: "", password: "" });
