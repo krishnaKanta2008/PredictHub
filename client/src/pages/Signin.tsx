@@ -7,8 +7,9 @@ import { checkSession } from "@/components/Auth/Auth";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Eye, EyeOff } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 
-const BACKEND_URL = process.env.VITE_BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function Signin() {
     const [formData, setFormData] = useState({ username: "", password: "" });
@@ -76,7 +77,7 @@ export default function Signin() {
                 />
             </div>
             <div className="min-h-screen flex items-center justify-center p-4">
-                <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+                <div className="max-w-md w-full mx-auto p-4 md:p-8 shadow-input">
                     <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200 text-center mb-4">
                         Signin
                     </h2>
@@ -128,7 +129,13 @@ export default function Signin() {
                             type="submit"
                             disabled={isLoading}
                         >
-                            {isLoading ? "Signing in..." : "Sign in →"}
+                            {isLoading ? 
+                                <div className="flex justify-center items-center space-x-2">
+                                    Signing in <Icons.spinner className="h-4 w-4 animate-spin ml-2"/>
+                                </div>
+                                : 
+                                "Sign in →"
+                            }
                             <BottomGradient />
                         </button>
 
@@ -139,6 +146,12 @@ export default function Signin() {
                             </Link>
                         </p>
                     </form>
+                    <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
+                        By clicking continue, you agree to our{" "}
+                        <a href="/terms" className="text-blue-600 hover:underline dark:text-blue-400">Terms of Service</a>{" "}
+                        and{" "}
+                        <a href="/privacypolicy" className="text-blue-600 hover:underline dark:text-blue-400">Privacy Policy</a>.
+                    </p>
                 </div>
             </div>
         </>

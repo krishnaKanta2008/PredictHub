@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import { checkSession } from "@/components/Auth/Auth";
+import { Icons } from "@/components/ui/icons";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
@@ -32,7 +33,7 @@ export default function Signup() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLoading(true); // Set loading state to true
+        setLoading(true);
 
         try {
             const response = await fetch(`${BACKEND_URL}/signup`, {
@@ -63,7 +64,7 @@ export default function Signup() {
                 description: `Something went wrong. Please try again. ${error}`,
             });
         } finally {
-            setLoading(false); // Reset loading state
+            setLoading(false);
         }
     };
 
@@ -82,7 +83,7 @@ export default function Signup() {
                 />
             </div>
             <div className="min-h-screen flex items-center justify-center p-4">
-                <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+                <div className="max-w-md w-full mx-auto p-4 md:p-8 shadow-input">
                     <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200 text-center">
                         Welcome to Predicthub
                     </h2>
@@ -157,7 +158,12 @@ export default function Signup() {
                             type="submit"
                             disabled={loading}
                         >
-                            {loading ? "Signing up..." : "Sign up →"}
+                            {loading ? 
+                                <div className="flex justify-center items-center space-x-2">
+                                    Signing up <Icons.spinner className="h-4 w-4 animate-spin ml-2" />
+                                </div>:
+                                "Sign up →"
+                            }
                             <BottomGradient />
                         </button>
 
@@ -168,6 +174,12 @@ export default function Signup() {
                             </Link>
                         </p>
                     </form>
+                    <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
+                        By clicking continue, you agree to our{" "}
+                        <a href="/terms" className="text-blue-600 hover:underline dark:text-blue-400">Terms of Service</a>{" "}
+                        and{" "}
+                        <a href="/privacypolicy" className="text-blue-600 hover:underline dark:text-blue-400">Privacy Policy</a>.
+                    </p>
                 </div>
             </div>
         </>
