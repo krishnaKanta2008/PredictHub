@@ -17,6 +17,7 @@ import Prediction from "./pages/Prediction";
 import  { RandomForest } from "./pages/RandomForest";
 import { ARIMA } from "./pages/ARIMA";
 import ErrorPage from "./pages/ErrorPage";
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="*" element={<ErrorPage/>} />
       </Routes>
       <Toaster />
+      <Analytics />
     </ThemeProvider>
   )
 }
