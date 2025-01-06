@@ -51,7 +51,7 @@ PredictHub is a sophisticated stock price prediction and analyzing platform that
 
 ### Project Gothrough Video
 
-
+![Prediccthub Project Video](./About_Project/Predicthub%20Webapp.mp4)
 
 ### Installation Guide
 

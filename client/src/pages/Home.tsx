@@ -4,7 +4,7 @@ import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { fetchStockData } from "@/lib/actions";
 import { useCallback, useState, useEffect } from "react";
-import ChatWidget from "@/components/Chatbot/Chatbot";
+import AppChatBot from "@/components/Chatbot/AppChatBot";
 
 const Home = () => {
   const [ticker, setTicker] = useState("GOOGL");
@@ -44,7 +44,7 @@ const Home = () => {
             <Dashboard data={data} loading={loading} ticker={ticker} />
           </div>
         </div>
-        <ChatWidget />
+        <AppChatBot />
       </SidebarProvider>
     </>
   );
