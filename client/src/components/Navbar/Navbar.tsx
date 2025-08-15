@@ -75,7 +75,7 @@ const DATA = {
 
             email: {
                 name: "Send Email",
-                url: "mailto:kb0397206@gmail.com",
+                url: "mailto:krishnakantabera09@gmail.com",
                 icon: Icons.email,
             },
         },
